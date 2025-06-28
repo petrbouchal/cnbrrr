@@ -41,11 +41,6 @@ reference:
   - arad_parse_date
   - arad_validate_indicators
 
-articles:
-- title: internal
-  contents:
-  - cnbrrr-orig
-
 authors:
   Petr Bouchal:
     href: https://petrbouchal.xyz

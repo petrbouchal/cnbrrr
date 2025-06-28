@@ -1,25 +1,19 @@
 ---
 title: "cnbrrr"
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{cnbrrr}
-  %\VignetteEngine{quarto::html}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-knitr:
-  opts_chunk:
-    collapse: true
-    comment: '#>'
 ---
 
-
-```{r}
-#| eval: false
-#| include: false
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  eval = TRUE
+  fig.path = "man/figures/README-",
+  out.width = "100%"
 )
-
 ```
 
 The `cnbrrr` package provides a convenient interface to the Czech National Bank's ARAD (Aggregated data of the CNB) API for accessing economic and financial data.
@@ -31,9 +25,6 @@ Install the development version from GitHub:
 ```{r eval=FALSE}
 # install.packages("remotes")
 remotes::install_github("petrbouchal/cnbrrr")
-
-Alternatively, you can pass the API key directly to function calls.
-
 ```
 
 ## Setup
@@ -54,7 +45,6 @@ Alternatively, you can pass the API key directly to function calls.
 Start by exploring what indicators are available. The ARAD API provides several endpoints for discovering indicators:
 
 ```{r}
-#| eval: false
 library(cnbrrr)
 
 # Get indicators from a specific data set (replace with actual set_id)
@@ -62,30 +52,23 @@ indicators <- arad_list_indicators(set_id = 1115, filter = "podnik")
 head(indicators)
 ```
 
-
 ```{r}
-#| eval: false
 # Filter indicators by name within a data set
 gdp_indicators <- arad_list_indicators(set_id = 1032, filter = "Místní vládní instituce")
 gdp_indicators
 ```
 
-
 ```{r}
-#| eval: false
 # Get specific indicators by indicator IDs
 specific_indicators <- arad_list_indicators(indicator_id_list = "SFU2QS1313L05T")
 specific_indicators
 ```
 
-
 ```{r}
-#| eval: false
 # Get multiple indicators by their IDs
 multiple_indicators <- arad_list_indicators(indicator_id_list = c("SFU2QS1313L05T", "SFU2QS1313A06LE"))
 multiple_indicators
 ```
-
 
 ```{r eval=FALSE}
 # Get indicators from a named selection in your ARAD account
@@ -96,28 +79,22 @@ selection_indicators
 Explore the structure and organization of indicators:
 
 ```{r}
-#| eval: false
 # Get indicator dimensions (shows how indicators are organized)
 indicators_in_base <- arad_list_indicators(base_id = "MBOP")
 head(indicators_in_base)
 ```
 
-
 ```{r}
-#| eval: false
 # Get dimensional structure for a specific set
 dims <- arad_indicators_dims(set_id = 1115)
 head(dims)
 ```
 
-
 ```{r}
-#| eval: false
 # Get dimensions for specific indicators
 specific_dims <- arad_indicators_dims(indicator_id_list = c("SFU2QS1313L05T", "SFU2QS1313A06LE"))
 specific_dims
 ```
-
 
 ```{r, eval=FALSE}
 # Get dimensions from a named selection
@@ -125,63 +102,17 @@ selection_dims <- arad_indicators_dims(selection_id = "my_selection")
 selection_dims
 ```
 
-
 ```{r}
-#| eval: false
 # Get the hierarchical tree structure of indicators
 tree <- arad_indicators_tree(set_id = 1115)
 head(tree)
 ```
 
-
 ```{r}
-#| eval: false
 # Get tree structure for specific indicators
 specific_tree <- arad_indicators_tree(indicator_id_list = c("SFU2QS1313L05T", "SFU2QS1313A06LE"))
 specific_tree
-
-
-
-
-
-
-
-
-
-
-
-
-
-Explore the structure and organization of indicators:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-**Finding IDs**: To effectively use these functions, browse the [ARAD web interface](https://www.cnb.cz/arad/) to find:
-- **set_id**: Identifies data sets (collections of related indicators)
-- **base_id**: Identifies specific indicators within sets
-- **indicators_list**: Use specific indicator IDs when you know exactly which indicators you need (e.g., "SRUMD08402")
-- **selection_id**: Use named selections you've created in your ARAD user account to group indicators
-
 ```
-
 
 ```{r, eval=FALSE}
 # Get tree structure from a named selection
@@ -200,15 +131,12 @@ selection_tree
 Get time series data for the indicators you need:
 
 ```{r}
-#| eval: false
 # Get data for a single indicator
 data <- arad_get_data(c("MBOPCAHDPPECY", "MBOPCCHDPPECY"))
 data
 ```
 
-
 ```{r}
-#| eval: false
 # Get data for multiple indicators at once
 multi_data <- arad_get_data(indicator_ids = c("MBOPCAHDPPECY", "MBOPCCHDPPECY"),
                             period_to = "20231231",
@@ -216,25 +144,13 @@ multi_data <- arad_get_data(indicator_ids = c("MBOPCAHDPPECY", "MBOPCCHDPPECY"),
 multi_data
 ```
 
-
 ```{r}
-#| eval: false
 # Get raw data without processing (returns raw CSV data)
 raw_data <- arad_get_data("SRUMD08402C", process_data = FALSE)
 raw_data
-
-
-
-
-
-
-
-
-
 ```
 
 ```{r}
-#| eval: false
 # Get data with both filters and rename the value column
 spending <- arad_get_data("SRUMD08402C",
                            period_from = "20121231",
@@ -252,19 +168,12 @@ You can explore how indicators are organized using the dimension and tree functi
 The package includes several helper functions:
 
 ```{r}
-#| eval: false
 # Validate indicator ID format
 valid_ids <- arad_validate_indicators(c("SRUMD08402C", "INVALID_ID"))
 valid_ids
-
-
-
-
 ```
 
-
 ```{r}
-#| eval: false
 # Parse ARAD date format manually
 dates <- arad_parse_date(c("20231201", "20231101"))
 dates
@@ -275,7 +184,6 @@ dates
 Here's a full workflow for analyzing Czech economic data:
 
 ```{r}
-#| eval: false
 library(cnbrrr)
 library(dplyr)
 library(ggplot2)
@@ -285,9 +193,7 @@ indicators <- arad_list_indicators(base_id = "SHDPZDR", filter = "HDP")
 print(head(indicators))
 ```
 
-
 ```{r}
-#| eval: false
 # 2. Get the data (assuming we found a GDP indicator)
 gdp_data <- arad_get_data("SRUMD08402C",
                            rename_value = "gdp") |>
@@ -315,9 +221,7 @@ gdp_summary <- recent_gdp |>
 print(gdp_summary)
 ```
 
-
 ```{r}
-#| eval: false
 # 5. Create visualization
 gdp_plot <- ggplot(recent_gdp, aes(x = year, y = gdp)) +
   geom_line(color = "#0000ff", size = 1.2) +
@@ -339,25 +243,9 @@ gdp_plot <- ggplot(recent_gdp, aes(x = year, y = gdp)) +
   )
 
 print(gdp_plot)
-
-
-
-
-
-
-
-![plot of chunk unnamed-chunk-24](figure/unnamed-chunk-24-1.png)
-
-
-
-
-![plot of chunk unnamed-chunk-25](figure/unnamed-chunk-25-1.png)
-
 ```
 
-
 ```{r}
-#| eval: false
 # 6. Growth rate visualization
 growth_plot <- ggplot(recent_gdp, aes(x = year, y = gdp_growth)) +
   geom_col(aes(fill = is_recession), alpha = 0.8) +
@@ -380,7 +268,6 @@ growth_plot <- ggplot(recent_gdp, aes(x = year, y = gdp_growth)) +
   )
 
 print(growth_plot)
-
 ```
 
 ## Data format and structure
@@ -396,7 +283,6 @@ All functions return data frames with consistent column structure:
 Additional columns may be present depending on the specific data series.
 
 ```{r}
-#| eval: false
 # Example of typical data structure
 sample_data <- arad_get_data("SRUMD08402C")
 str(sample_data)
