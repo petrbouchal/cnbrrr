@@ -2,6 +2,8 @@
 ^\.Rproj\.user$
 ^vignettes/\.quarto$
 ^vignettes/*_files$
+^vignettes/precompile.R
+^vignettes/cnbrrr-orig.qmd
 README.qmd
 _pkgdown.yml
 docs
