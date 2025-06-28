@@ -10,3 +10,4 @@ inst/doc
 # Quarto freeze directory (computational cache)
 _freeze/
 **/_freeze/
+docs
