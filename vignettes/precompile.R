@@ -7,7 +7,7 @@ library(knitr)
 knitr::opts_chunk$set(fig.path = "cnbrrr_files/figure-html/")
 
 # Knit the original vignette to create the precomputed version
-knitr::knit("cnbrrr.Rmd.orig", output = "cnbrrr.Rmd")
+knitr::knit("vignettes/cnbrrr.Rmd.orig", output = "vignettes/cnbrrr.Rmd")
 
 cat("Precomputed vignette created!\n")
 cat("- Original source: cnbrrr.Rmd.orig\n")

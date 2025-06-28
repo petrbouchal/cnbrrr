@@ -147,7 +147,6 @@ multi_data
 ```{r}
 # Get raw data without processing (returns raw CSV data)
 raw_data <- arad_get_data("SRUMD08402C", process_data = FALSE)
-raw_data
 ```
 
 ```{r}
