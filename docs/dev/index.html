@@ -36,6 +36,7 @@
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="articles/cnbrrr.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="articles/index.html">Articles</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item dropdown">
@@ -46,6 +47,7 @@
     <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
   </ul>
 </li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/petrbouchal/cnbrrr/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://petrbouchal.xyz"><span class="fa fa-asterisk fa-lg"></span></a></li>
       </ul>
 </div>
@@ -63,6 +65,7 @@
 <h1 id="cnbrrr">cnbrrr<a class="anchor" aria-label="anchor" href="#cnbrrr"></a>
 </h1>
 <p>R package for accessing data from the Czech National Bank’s ARAD (Aggregated data of the CNB) API.</p>
+<p>The package is not affiliated in any way to the Czech National Bank but I am grateful to them for proving the data and maintaining the infrastructure.</p>
 <div class="section level2">
 <h2 id="about-arad">About ARAD<a class="anchor" aria-label="anchor" href="#about-arad"></a>
 </h2>
@@ -81,6 +84,7 @@
 <strong>International comparisons</strong> - harmonized indicators across countries</li>
 </ul>
 <p>The data spans from the 1990s to present, with most series updated monthly or quarterly. All data comes from the CNB’s statistical processing and external statistical sources.</p>
+<p>Comprehensive user guidance is at <a href="https://www.cnb.cz/arad/#/cs/documentation" class="external-link uri">https://www.cnb.cz/arad/#/cs/documentation</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="package-features">Package features<a class="anchor" aria-label="anchor" href="#package-features"></a>
@@ -88,17 +92,13 @@
 <p>The <code>cnbrrr</code> package provides:</p>
 <ul>
 <li>
-<strong>Simple data retrieval</strong> with automatic date parsing and formatting</li>
+<strong>Data discovery</strong>: listing indicators contained in a set or base</li>
 <li>
 <strong>Metadata exploration</strong> to discover available indicators and categories</li>
 <li>
-<strong>Filtering functions</strong> for common data operations</li>
+<strong>Simple data retrieval</strong> with automatic date parsing and formatting</li>
 <li>
 <strong>Consistent data structure</strong> across all functions</li>
-<li>
-<strong>Comprehensive error handling</strong> with clear messages</li>
-<li>
-<strong>Support for both processed and raw data</strong> formats</li>
 </ul>
 </div>
 <div class="section level2">
@@ -111,7 +111,10 @@
 <div class="section level2">
 <h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
 </h2>
-<p>Obtain an API key from the Czech National Bank and set it as an environment variable:</p>
+<ul>
+<li>obtain an API key from the Czech National Bank (requires registration)</li>
+<li>set it as an environment variable:</li>
+</ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>ARAD_API_KEY <span class="op">=</span> <span class="st">"your_api_key_here"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -119,9 +122,9 @@
 <h2 id="quick-example">Quick example<a class="anchor" aria-label="anchor" href="#quick-example"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">cnbrrr</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://petrbouchal.xyz/cnbrrr">cnbrrr</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># List available indicators</span></span>
+<span><span class="co"># List available indicators from set (sestava), filter by name</span></span>
 <span><span class="va">indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>set_id <span class="op">=</span> <span class="fl">1032</span>, filter <span class="op">=</span> <span class="st">"domácnost"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>ℹ Using <span class="st">"','"</span> as decimal and <span class="st">"'.'"</span> as grouping mark. Use <span class="st">`</span><span class="at">read_delim()</span><span class="st">`</span> <span class="cf">for</span> more control.</span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -141,6 +144,7 @@
 <span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="dv">10</span> SFU2QS15A05T  Finanční účty, F2… Q              Čtvrtletní     <span class="dv">6</span>             </span>
 <span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co"># ℹ 142 more rows</span></span>
 <span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co"># ℹ 2 more variables: unit_mult_name &lt;chr&gt;, unit &lt;chr&gt;</span></span></code></pre></div>
+<p>Note there is no way to list all available indicators or to list bases and sets - you need to have some idea of what you are looking for - for that, check the website.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get data for a specific indicator  </span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span><span class="op">)</span></span></code></pre></div>
@@ -151,6 +155,22 @@
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"SRUMD08402C"</span></span>
 <span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a></span>
 <span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>ℹ Using <span class="st">"','"</span> as decimal and <span class="st">"'.'"</span> as grouping mark. Use <span class="st">`</span><span class="at">read_delim()</span><span class="st">`</span> <span class="cf">for</span> more control.</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># A tibble: 389 × 6</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>   indicator_id snapshot_id period                value  year month</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>   <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>        <span class="er">&lt;</span>chr<span class="sc">&gt;</span>       <span class="er">&lt;</span>dttm<span class="sc">&gt;</span>                <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a> <span class="dv">1</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2025-05-31</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">9.45e11</span>  <span class="dv">2025</span>     <span class="dv">5</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a> <span class="dv">2</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2025-04-30</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">7.49e11</span>  <span class="dv">2025</span>     <span class="dv">4</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a> <span class="dv">3</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2025-03-31</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">5.68e11</span>  <span class="dv">2025</span>     <span class="dv">3</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a> <span class="dv">4</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2025-02-28</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">3.65e11</span>  <span class="dv">2025</span>     <span class="dv">2</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a> <span class="dv">5</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2025-01-31</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">1.73e11</span>  <span class="dv">2025</span>     <span class="dv">1</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a> <span class="dv">6</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2024-12-31</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">2.24e12</span>  <span class="dv">2024</span>    <span class="dv">12</span></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a> <span class="dv">7</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2024-11-30</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">2.00e12</span>  <span class="dv">2024</span>    <span class="dv">11</span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a> <span class="dv">8</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2024-10-31</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">1.80e12</span>  <span class="dv">2024</span>    <span class="dv">10</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a> <span class="dv">9</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2024-09-30</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">1.63e12</span>  <span class="dv">2024</span>     <span class="dv">9</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="dv">10</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2024-08-31</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">1.45e12</span>  <span class="dv">2024</span>     <span class="dv">8</span></span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="co"># ℹ 379 more rows</span></span></code></pre></div>
 <p>See the <a href="articles/cnbrrr.html">Get started</a> vignette for detailed workflows and examples.</p>
 </div>
 <div class="section level2">
@@ -160,12 +180,19 @@
 </div>
 </div>
 
-  </main><aside class="col-md-3"><div class="license">
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/petrbouchal/cnbrrr/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/petrbouchal/cnbrrr/issues" class="external-link">Report a bug</a></li>
+</ul>
+</div>
+
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
 

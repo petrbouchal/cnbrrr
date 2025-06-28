@@ -21,12 +21,14 @@ or selection ID, with optional date filtering and value column renaming."><meta 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/cnbrrr.html">Get started</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/index.html">Articles</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch"><li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
     <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
     <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
   </ul></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/petrbouchal/cnbrrr/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://petrbouchal.xyz"><span class="fa fa-asterisk fa-lg"></span></a></li>
       </ul></div>
 
@@ -37,7 +39,7 @@ or selection ID, with optional date filtering and value column renaming."><meta 
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Retrieve data from ARAD API</h1>
-
+      <small class="dont-index">Source: <a href="https://github.com/petrbouchal/cnbrrr/blob/HEAD/R/arad_api.R" class="external-link"><code>R/arad_api.R</code></a></small>
       <div class="d-none name"><code>arad_get_data.Rd</code></div>
     </div>
 
@@ -132,15 +134,15 @@ or selection ID, with optional date filtering and value column renaming.</p>
 <span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">arad_get_data</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, <span class="st">"ANOTHER_ID"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Get data with date filtering</span></span></span>
-<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">arad_get_data</span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, </span></span>
-<span class="r-in"><span>                      period_from <span class="op">=</span> <span class="st">"20200101"</span>, </span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">arad_get_data</span><span class="op">(</span><span class="st">"SRUMD08402C"</span>,</span></span>
+<span class="r-in"><span>                      period_from <span class="op">=</span> <span class="st">"20200101"</span>,</span></span>
 <span class="r-in"><span>                      period_to <span class="op">=</span> <span class="st">"20231231"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Get data from a set ID</span></span></span>
 <span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">arad_get_data</span><span class="op">(</span>set_id <span class="op">=</span> <span class="st">"1115"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Get data from a selection with custom value column name</span></span></span>
-<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">arad_get_data</span><span class="op">(</span>selection_id <span class="op">=</span> <span class="st">"my_selection"</span>, </span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">arad_get_data</span><span class="op">(</span>selection_id <span class="op">=</span> <span class="st">"my_selection"</span>,</span></span>
 <span class="r-in"><span>                      rename_value <span class="op">=</span> <span class="st">"spending"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Get recent data using months_before</span></span></span>

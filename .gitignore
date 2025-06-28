@@ -6,3 +6,7 @@ inst/doc
 .httr-oauth
 .DS_Store
 .quarto
+
+# Quarto freeze directory (computational cache)
+_freeze/
+**/_freeze/

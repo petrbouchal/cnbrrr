@@ -4,7 +4,10 @@
       "Bash(mkdir:*)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:github.com)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(Rscript:*)",
+      "Bash(grep:*)"
     ],
     "deny": []
   }

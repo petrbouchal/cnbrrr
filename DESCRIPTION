@@ -28,5 +28,5 @@ VignetteBuilder: quarto
 Language: en
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-URL: https://github.com/petrbouchal/cnbrrr
+URL: https://petrbouchal.xyz/cnbrrr/, https://github.com/petrbouchal/cnbrrr
 BugReports: https://github.com/petrbouchal/cnbrrr/issues

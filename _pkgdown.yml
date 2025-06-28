@@ -42,10 +42,9 @@ reference:
   - arad_validate_indicators
 
 articles:
-- title: Get started
-  navbar: ~
+- title: internal
   contents:
-  - cnbrrr
+  - cnbrrr-orig
 
 authors:
   Petr Bouchal:
