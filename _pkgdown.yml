@@ -1,0 +1,52 @@
+home:
+  title: An R package for using data from the Czech National Bank ARAD API
+  description: Discover, retrieve and use economic and financial data from the Czech National Bank's ARAD API.
+
+destination: docs
+url: https://petrbouchal.xyz/cnbrrr
+development:
+  mode: auto
+template:
+  light-switch: true
+  bslib:
+    version: 5
+    brand: pkgdown/_brand.yml
+
+navbar:
+  structure:
+    left:  [home, intro, reference, articles, news]
+    right: [lightswitch, github, pbhome]
+  components:
+    pbhome:
+      icon: "fa-asterisk fa-lg"
+      href: https://petrbouchal.xyz
+
+reference:
+- title: Core workflow
+  desc: Functions for main data retrieval workflow
+  contents:
+  - arad_get_data
+
+- title: Discovery and exploration
+  desc: Functions for finding and exploring indicators
+  contents:
+  - arad_list_indicators
+  - arad_get_indicators
+  - arad_indicators_dims
+  - arad_indicators_tree
+
+- title: Utility functions
+  desc: Helper functions for data processing
+  contents:
+  - arad_parse_date
+  - arad_validate_indicators
+
+articles:
+- title: Get started
+  navbar: ~
+  contents:
+  - cnbrrr
+
+authors:
+  Petr Bouchal:
+    href: https://petrbouchal.xyz

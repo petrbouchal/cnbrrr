@@ -1,0 +1,12 @@
+^cnbrrr\.Rproj$
+^\.Rproj\.user$
+^vignettes/\.quarto$
+^vignettes/*_files$
+README.qmd
+_pkgdown.yml
+docs
+pkgdown
+config
+.claude
+.github
+LICENSE.md

@@ -1,0 +1,9 @@
+pandoc: '3.5'
+pkgdown: 2.1.3
+pkgdown_sha: ~
+articles:
+  cnbrrr: cnbrrr.html
+last_built: 2025-06-27T13:10Z
+urls:
+  reference: https://petrbouchal.xyz/cnbrrr/reference
+  article: https://petrbouchal.xyz/cnbrrr/articles

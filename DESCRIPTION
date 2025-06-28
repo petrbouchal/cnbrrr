@@ -1,0 +1,30 @@
+Package: cnbrrr
+Type: Package
+Title: Interface to Czech National Bank ARAD Data API
+Version: 0.0.9000
+Authors@R: c(
+    person("Petr", "Bouchal", , "pbouchal@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-0471-716X")),
+    person("Jindra", "Lacko", role = "ctb")
+  )
+Description: Provides functions to access data from the Czech National Bank's 
+    ARAD (Aggregated data of the CNB) API at <https://www.cnb.cz/arad/>. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    httr2,
+    readr,
+    lubridate,
+    dplyr
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    quarto,
+    rmarkdown,
+    ggplot2
+Config/testthat/edition: 3
+VignetteBuilder: quarto
+Language: en
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
