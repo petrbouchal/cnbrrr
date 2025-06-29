@@ -16,7 +16,9 @@ arad_get_data(
   api_key = NULL,
   base_url = "https://www.cnb.cz/aradb/api/v1",
   process_data = TRUE,
-  encoding = "windows-1250"
+  encoding = "windows-1250",
+  dest_dir = NULL,
+  force_redownload = FALSE
 )
 }
 \arguments{
@@ -43,6 +45,10 @@ arad_get_data(
 \item{process_data}{Logical, whether to process the raw data (default TRUE)}
 
 \item{encoding}{Character encoding for the response (default "windows-1250")}
+
+\item{dest_dir}{Character, directory where downloaded files are saved. Defaults to getOption("cnbrrr.dest_dir", tempdir())}
+
+\item{force_redownload}{Logical, if TRUE forces redownload even if file exists (default FALSE)}
 }
 \value{
 A data frame with the requested data
@@ -74,5 +80,15 @@ data <- arad_get_data(selection_id = "my_selection",
 
 # Get recent data using months_before
 recent_data <- arad_get_data("SRUMD08402C", months_before = 12)
+
+# Save data to specific directory
+data <- arad_get_data("SRUMD08402C", dest_dir = "~/data")
+
+# Force redownload of existing data
+fresh_data <- arad_get_data("SRUMD08402C", force_redownload = TRUE)
+
+# Set global destination directory
+options(cnbrrr.dest_dir = "~/cnb_data")
+data <- arad_get_data("SRUMD08402C")  # Will use ~/cnb_data
 }
 }

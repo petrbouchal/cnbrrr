@@ -16,6 +16,8 @@
 #' @param base_url Base URL for the ARAD API
 #' @param process_data Logical, whether to process the raw data (default TRUE)
 #' @param encoding Character encoding for the response (default "windows-1250")
+#' @param dest_dir Character, directory where downloaded files are saved. Defaults to getOption("cnbrrr.dest_dir", tempdir())
+#' @param force_redownload Logical, if TRUE forces redownload even if file exists (default FALSE)
 #'
 #' @return A data frame with the requested data
 #' @export
@@ -42,6 +44,16 @@
 #'
 #' # Get recent data using months_before
 #' recent_data <- arad_get_data("SRUMD08402C", months_before = 12)
+#'
+#' # Save data to specific directory
+#' data <- arad_get_data("SRUMD08402C", dest_dir = "./data")
+#'
+#' # Force redownload of existing data
+#' fresh_data <- arad_get_data("SRUMD08402C", force_redownload = TRUE)
+#'
+#' # Set global destination directory
+#' options(cnbrrr.dest_dir = "~/cnb_data")
+#' data <- arad_get_data("SRUMD08402C")  # Will use ~/cnb_data
 #' }
 arad_get_data <- function(indicator_ids = NULL,
                           set_id = NULL,
@@ -54,7 +66,9 @@ arad_get_data <- function(indicator_ids = NULL,
                           api_key = NULL,
                           base_url = "https://www.cnb.cz/aradb/api/v1",
                           process_data = TRUE,
-                          encoding = "windows-1250") {
+                          encoding = "windows-1250",
+                          dest_dir = NULL,
+                          force_redownload = FALSE) {
 
   if (is.null(api_key)) {
     api_key <- Sys.getenv("ARAD_API_KEY")
@@ -67,7 +81,45 @@ arad_get_data <- function(indicator_ids = NULL,
     stop("At least one indicator ID must be provided.")
   }
 
+  if (is.null(dest_dir)) {
+    dest_dir <- getOption("cnbrrr.dest_dir", tempdir())
+  }
+
   indicator_list <- paste(indicator_ids, collapse = ",")
+  file_id <- paste(sort(indicator_ids), collapse = "_")
+  if (!is.null(set_id)) file_id <- paste(file_id, set_id, sep = "_")
+  if (!is.null(base_id)) file_id <- paste(file_id, base_id, sep = "_")
+  if (!is.null(selection_id)) file_id <- paste(file_id, selection_id, sep = "_")
+  if (!is.null(period_from)) file_id <- paste(file_id, period_from, sep = "_")
+  if (!is.null(period_to)) file_id <- paste(file_id, period_to, sep = "_")
+  if (!is.null(months_before)) file_id <- paste(file_id, months_before, sep = "_")
+  
+  file_path <- file.path(dest_dir, paste0("arad_", file_id, ".csv"))
+  
+  if (file.exists(file_path) && !force_redownload) {
+    message("File already exists at ", file_path, ". Loading from cache. Use force_redownload = TRUE to redownload.")
+    if (!process_data) {
+      return(readBin(file_path, "raw", file.info(file_path)$size))
+    }
+    data <- readr::read_csv2(file_path,
+                            locale = readr::locale(encoding = encoding),
+                            col_types = "cccd")
+    
+    if (nrow(data) > 0 && "period" %in% names(data)) {
+      data <- data |>
+        dplyr::mutate(
+          period = lubridate::parse_date_time(period, orders = "%Y%m%d"),
+          year = lubridate::year(period),
+          month = lubridate::month(period)
+        )
+    }
+    
+    if (!is.null(rename_value) && "value" %in% names(data)) {
+      data <- data |> dplyr::rename(!!rename_value := value)
+    }
+    
+    return(data)
+  }
 
   query_list <- list(api_key = api_key)
 
@@ -91,16 +143,14 @@ arad_get_data <- function(indicator_ids = NULL,
 
   raw_data <- httr2::resp_body_raw(response)
 
+  dir.create(dirname(file_path), showWarnings = FALSE, recursive = TRUE)
+  writeLines(rawToChar(raw_data), file_path)
+
   if (!process_data) {
-    return(raw_data)
+    return(readBin(file_path, "raw", file.info(file_path)$size))
   }
 
-  temp_file <- tempfile(fileext = ".csv")
-  on.exit(unlink(temp_file))
-
-  writeLines(rawToChar(raw_data), temp_file)
-
-  data <- readr::read_csv2(temp_file,
+  data <- readr::read_csv2(file_path,
                           locale = readr::locale(encoding = encoding),
                           col_types = "cccd")
 
