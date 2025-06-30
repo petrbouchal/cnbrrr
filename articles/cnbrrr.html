@@ -5,16 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Get started • cnbrrr</title>
+<title>cnbrrr • cnbrrr</title>
 <script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="https://fonts.bunny.net/css?family=IBM%20Plex%20Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&amp;display=auto" rel="stylesheet">
 <link href="https://fonts.bunny.net/css?family=IBM%20Plex%20Code:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&amp;display=auto" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="cnbrrr_files/libs/quarto-html/popper.min.js"></script><script src="cnbrrr_files/libs/quarto-html/tippy.umd.min.js"></script><link href="cnbrrr_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="cnbrrr_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Get started">
+<link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="cnbrrr">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -24,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">cnbrrr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,6 +33,7 @@
       <ul class="navbar-nav me-auto">
 <li class="active nav-item"><a class="nav-link" href="../articles/cnbrrr.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item dropdown">
@@ -45,160 +44,381 @@
     <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
   </ul>
 </li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/petrbouchal/cnbrrr/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://petrbouchal.xyz"><span class="fa fa-asterisk fa-lg"></span></a></li>
       </ul>
 </div>
 
 
   </div>
-</nav><div class="container template-quarto">
+</nav><div class="container template-article">
+
+
+
+
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>Get started</h1>
-
-
-
-
-
-      <div class="d-none name"><code></code></div>
+      <h1>cnbrrr</h1>
+            
+      
+      <small class="dont-index">Source: <a href="https://github.com/petrbouchal/cnbrrr/blob/main/vignettes/cnbrrr.Rmd" class="external-link"><code>vignettes/cnbrrr.Rmd</code></a></small>
+      <div class="d-none name"><code>cnbrrr.Rmd</code></div>
     </div>
 
-
-
-
-
-
-    <p>The <code>cnbrrr</code> package provides a convenient interface to the Czech National Bank’s ARAD (Aggregated data of the CNB) API for accessing economic and financial data.</p>
-<section class="level2"><h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+    
+    
+<p>The <code>cnbrrr</code> package provides a convenient interface to
+the Czech National Bank’s ARAD (Aggregated data of the CNB) API for
+accessing economic and financial data.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>Install the development version from GitHub:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"petrbouchal/cnbrrr"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"petrbouchal/cnbrrr"</span><span class="op">)</span></span></code></pre></div>
 </div>
-</section><section class="level2"><h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
+<div class="section level2">
+<h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
 </h2>
-<p>Before using the package, obtain an API key from the Czech National Bank and set it as an environment variable:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
+<p>Before using the package, obtain an API key from the Czech National
+Bank and set it as an environment variable:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Set your API key</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>ARAD_API_KEY <span class="op">=</span> <span class="st">"your_api_key_here"</span><span class="op">)</span></span></code></pre></div>
+<p>Alternatively, you can pass the API key directly to function
+calls.</p>
 </div>
-<p>Alternatively, you can pass the API key directly to function calls.</p>
-</section><section class="level2"><h2 id="core-workflow">Core workflow<a class="anchor" aria-label="anchor" href="#core-workflow"></a>
+<div class="section level2">
+<h2 id="core-workflow">Core workflow<a class="anchor" aria-label="anchor" href="#core-workflow"></a>
 </h2>
-<section class="level3"><h3 id="discover-available-data">1. Discover available data<a class="anchor" aria-label="anchor" href="#discover-available-data"></a>
+<div class="section level3">
+<h3 id="discover-available-data">1. Discover available data<a class="anchor" aria-label="anchor" href="#discover-available-data"></a>
 </h3>
-<p>Start by exploring what indicators are available:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">cnbrrr</span><span class="op">)</span></span>
+<p>Start by exploring what indicators are available. The ARAD API
+provides several endpoints for discovering indicators:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://petrbouchal.xyz/cnbrrr/" class="external-link">cnbrrr</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Get all available indicators</span></span>
-<span><span class="va">indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_indicators.html">arad_get_indicators</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co"># Get indicators from a specific data set (replace with actual set_id)</span></span>
+<span><span class="va">indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>set_id <span class="op">=</span> <span class="fl">1115</span>, filter <span class="op">=</span> <span class="st">"podnik"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">indicators</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Search for specific indicators</span></span>
-<span><span class="va">gdp_indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_indicators.html">arad_get_indicators</a></span><span class="op">(</span>search <span class="op">=</span> <span class="st">"GDP"</span><span class="op">)</span></span>
-<span><span class="va">monetary_indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_indicators.html">arad_get_indicators</a></span><span class="op">(</span>search <span class="op">=</span> <span class="st">"monetary"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Filter by category</span></span>
-<span><span class="va">fiscal_indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_indicators.html">arad_get_indicators</a></span><span class="op">(</span>category <span class="op">=</span> <span class="st">"fiscal"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'indicators' not found</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Filter indicators by name within a data set</span></span>
+<span><span class="va">gdp_indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>set_id <span class="op">=</span> <span class="fl">1032</span>, filter <span class="op">=</span> <span class="st">"Místní vládní instituce"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.</span></span>
+<span><span class="va">gdp_indicators</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'gdp_indicators' not found</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get specific indicators by indicator IDs</span></span>
+<span><span class="va">specific_indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>indicator_id_list <span class="op">=</span> <span class="st">"SFU2QS1313L05T"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.</span></span>
+<span><span class="va">specific_indicators</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'specific_indicators' not found</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get multiple indicators by their IDs</span></span>
+<span><span class="va">multiple_indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>indicator_id_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SFU2QS1313L05T"</span>, <span class="st">"SFU2QS1313A06LE"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.</span></span>
+<span><span class="va">multiple_indicators</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'multiple_indicators' not found</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get indicators from a named selection in your ARAD account</span></span>
+<span><span class="va">selection_indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>selection_id <span class="op">=</span> <span class="st">"my_selection"</span><span class="op">)</span></span>
+<span><span class="va">selection_indicators</span></span></code></pre></div>
+<p>Explore the structure and organization of indicators:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get indicator dimensions (shows how indicators are organized)</span></span>
+<span><span class="va">indicators_in_base</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>base_id <span class="op">=</span> <span class="st">"MBOP"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">indicators_in_base</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'indicators_in_base' not found</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get dimensional structure for a specific set</span></span>
+<span><span class="va">dims</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_indicators_dims.html">arad_indicators_dims</a></span><span class="op">(</span>set_id <span class="op">=</span> <span class="fl">1115</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicator dimensions from ARAD API: HTTP 400 Bad Request.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">dims</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'dims' not found</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get dimensions for specific indicators</span></span>
+<span><span class="va">specific_dims</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_indicators_dims.html">arad_indicators_dims</a></span><span class="op">(</span>indicator_id_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SFU2QS1313L05T"</span>, <span class="st">"SFU2QS1313A06LE"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicator dimensions from ARAD API: HTTP 400 Bad Request.</span></span>
+<span><span class="va">specific_dims</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'specific_dims' not found</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get dimensions from a named selection</span></span>
+<span><span class="va">selection_dims</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_indicators_dims.html">arad_indicators_dims</a></span><span class="op">(</span>selection_id <span class="op">=</span> <span class="st">"my_selection"</span><span class="op">)</span></span>
+<span><span class="va">selection_dims</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get the hierarchical tree structure of indicators</span></span>
+<span><span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_indicators_tree.html">arad_indicators_tree</a></span><span class="op">(</span>set_id <span class="op">=</span> <span class="fl">1115</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicator tree from ARAD API: HTTP 400 Bad Request.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'tree' not found</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get tree structure for specific indicators</span></span>
+<span><span class="va">specific_tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_indicators_tree.html">arad_indicators_tree</a></span><span class="op">(</span>indicator_id_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SFU2QS1313L05T"</span>, <span class="st">"SFU2QS1313A06LE"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicator tree from ARAD API: HTTP 400 Bad Request.</span></span>
+<span><span class="va">specific_tree</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'specific_tree' not found</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get tree structure from a named selection</span></span>
+<span><span class="va">selection_tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_indicators_tree.html">arad_indicators_tree</a></span><span class="op">(</span>selection_id <span class="op">=</span> <span class="st">"my_selection"</span><span class="op">)</span></span>
+<span><span class="va">selection_tree</span></span></code></pre></div>
+<p><strong>Finding IDs</strong>: To effectively use these functions,
+browse the <a href="https://www.cnb.cz/arad/" class="external-link">ARAD web interface</a> to
+find: - <strong>set_id</strong>: Identifies data sets (collections of
+related indicators) - <strong>base_id</strong>: Identifies specific
+indicators within sets - <strong>indicators_list</strong>: Use specific
+indicator IDs when you know exactly which indicators you need (e.g.,
+“SRUMD08402”) - <strong>selection_id</strong>: Use named selections
+you’ve created in your ARAD user account to group indicators</p>
 </div>
-</section><section class="level3"><h3 id="retrieve-data-for-specific-indicators">2. Retrieve data for specific indicators<a class="anchor" aria-label="anchor" href="#retrieve-data-for-specific-indicators"></a>
+<div class="section level3">
+<h3 id="retrieve-data-for-specific-indicators">2. Retrieve data for specific indicators<a class="anchor" aria-label="anchor" href="#retrieve-data-for-specific-indicators"></a>
 </h3>
 <p>Get time series data for the indicators you need:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get data for a single indicator</span></span>
-<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Get data for multiple indicators at once</span></span>
-<span><span class="va">multi_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, <span class="st">"SRUMD08401C"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Get raw data without processing (returns raw CSV data)</span></span>
-<span><span class="va">raw_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, process_data <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MBOPCAHDPPECY"</span>, <span class="st">"MBOPCCHDPPECY"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.</span></span>
+<span><span class="va">data</span></span>
+<span><span class="co">#&gt; function (..., list = character(), package = NULL, lib.loc = NULL, </span></span>
+<span><span class="co">#&gt;     verbose = getOption("verbose"), envir = .GlobalEnv, overwrite = TRUE) </span></span>
+<span><span class="co">#&gt; {</span></span>
+<span><span class="co">#&gt;     fileExt &lt;- function(x) {</span></span>
+<span><span class="co">#&gt;         db &lt;- grepl("\\.[^.]+\\.(gz|bz2|xz)$", x)</span></span>
+<span><span class="co">#&gt;         ans &lt;- sub(".*\\.", "", x)</span></span>
+<span><span class="co">#&gt;         ans[db] &lt;- sub(".*\\.([^.]+\\.)(gz|bz2|xz)$", "\\1\\2", </span></span>
+<span><span class="co">#&gt;             x[db])</span></span>
+<span><span class="co">#&gt;         ans</span></span>
+<span><span class="co">#&gt;     }</span></span>
+<span><span class="co">#&gt;     my_read_table &lt;- function(...) {</span></span>
+<span><span class="co">#&gt;         lcc &lt;- Sys.getlocale("LC_COLLATE")</span></span>
+<span><span class="co">#&gt;         on.exit(Sys.setlocale("LC_COLLATE", lcc))</span></span>
+<span><span class="co">#&gt;         Sys.setlocale("LC_COLLATE", "C")</span></span>
+<span><span class="co">#&gt;         read.table(...)</span></span>
+<span><span class="co">#&gt;     }</span></span>
+<span><span class="co">#&gt;     stopifnot(is.character(list))</span></span>
+<span><span class="co">#&gt;     names &lt;- c(as.character(substitute(list(...))[-1L]), list)</span></span>
+<span><span class="co">#&gt;     if (!is.null(package)) {</span></span>
+<span><span class="co">#&gt;         if (!is.character(package)) </span></span>
+<span><span class="co">#&gt;             stop("'package' must be a character vector or NULL")</span></span>
+<span><span class="co">#&gt;     }</span></span>
+<span><span class="co">#&gt;     paths &lt;- find.package(package, lib.loc, verbose = verbose)</span></span>
+<span><span class="co">#&gt;     if (is.null(lib.loc)) </span></span>
+<span><span class="co">#&gt;         paths &lt;- c(path.package(package, TRUE), if (!length(package)) getwd(), </span></span>
+<span><span class="co">#&gt;             paths)</span></span>
+<span><span class="co">#&gt;     paths &lt;- unique(normalizePath(paths[file.exists(paths)]))</span></span>
+<span><span class="co">#&gt;     paths &lt;- paths[dir.exists(file.path(paths, "data"))]</span></span>
+<span><span class="co">#&gt;     dataExts &lt;- tools:::.make_file_exts("data")</span></span>
+<span><span class="co">#&gt;     if (length(names) == 0L) {</span></span>
+<span><span class="co">#&gt;         db &lt;- matrix(character(), nrow = 0L, ncol = 4L)</span></span>
+<span><span class="co">#&gt;         for (path in paths) {</span></span>
+<span><span class="co">#&gt;             entries &lt;- NULL</span></span>
+<span><span class="co">#&gt;             packageName &lt;- if (file_test("-f", file.path(path, </span></span>
+<span><span class="co">#&gt;                 "DESCRIPTION"))) </span></span>
+<span><span class="co">#&gt;                 basename(path)</span></span>
+<span><span class="co">#&gt;             else "."</span></span>
+<span><span class="co">#&gt;             if (file_test("-f", INDEX &lt;- file.path(path, "Meta", </span></span>
+<span><span class="co">#&gt;                 "data.rds"))) {</span></span>
+<span><span class="co">#&gt;                 entries &lt;- readRDS(INDEX)</span></span>
+<span><span class="co">#&gt;             }</span></span>
+<span><span class="co">#&gt;             else {</span></span>
+<span><span class="co">#&gt;                 dataDir &lt;- file.path(path, "data")</span></span>
+<span><span class="co">#&gt;                 entries &lt;- tools::list_files_with_type(dataDir, </span></span>
+<span><span class="co">#&gt;                   "data")</span></span>
+<span><span class="co">#&gt;                 if (length(entries)) {</span></span>
+<span><span class="co">#&gt;                   entries &lt;- unique(tools::file_path_sans_ext(basename(entries)))</span></span>
+<span><span class="co">#&gt;                   entries &lt;- cbind(entries, "")</span></span>
+<span><span class="co">#&gt;                 }</span></span>
+<span><span class="co">#&gt;             }</span></span>
+<span><span class="co">#&gt;             if (NROW(entries)) {</span></span>
+<span><span class="co">#&gt;                 if (is.matrix(entries) &amp;&amp; ncol(entries) == 2L) </span></span>
+<span><span class="co">#&gt;                   db &lt;- rbind(db, cbind(packageName, dirname(path), </span></span>
+<span><span class="co">#&gt;                     entries))</span></span>
+<span><span class="co">#&gt;                 else warning(gettextf("data index for package %s is invalid and will be ignored", </span></span>
+<span><span class="co">#&gt;                   sQuote(packageName)), domain = NA, call. = FALSE)</span></span>
+<span><span class="co">#&gt;             }</span></span>
+<span><span class="co">#&gt;         }</span></span>
+<span><span class="co">#&gt;         colnames(db) &lt;- c("Package", "LibPath", "Item", "Title")</span></span>
+<span><span class="co">#&gt;         footer &lt;- if (missing(package)) </span></span>
+<span><span class="co">#&gt;             paste0("Use ", sQuote(paste("data(package =", ".packages(all.available = TRUE))")), </span></span>
+<span><span class="co">#&gt;                 "\n", "to list the data sets in all *available* packages.")</span></span>
+<span><span class="co">#&gt;         else NULL</span></span>
+<span><span class="co">#&gt;         y &lt;- list(title = "Data sets", header = NULL, results = db, </span></span>
+<span><span class="co">#&gt;             footer = footer)</span></span>
+<span><span class="co">#&gt;         class(y) &lt;- "packageIQR"</span></span>
+<span><span class="co">#&gt;         return(y)</span></span>
+<span><span class="co">#&gt;     }</span></span>
+<span><span class="co">#&gt;     paths &lt;- file.path(paths, "data")</span></span>
+<span><span class="co">#&gt;     for (name in names) {</span></span>
+<span><span class="co">#&gt;         found &lt;- FALSE</span></span>
+<span><span class="co">#&gt;         for (p in paths) {</span></span>
+<span><span class="co">#&gt;             tmp_env &lt;- if (overwrite) </span></span>
+<span><span class="co">#&gt;                 envir</span></span>
+<span><span class="co">#&gt;             else new.env()</span></span>
+<span><span class="co">#&gt;             if (file_test("-f", file.path(p, "Rdata.rds"))) {</span></span>
+<span><span class="co">#&gt;                 rds &lt;- readRDS(file.path(p, "Rdata.rds"))</span></span>
+<span><span class="co">#&gt;                 if (name %in% names(rds)) {</span></span>
+<span><span class="co">#&gt;                   found &lt;- TRUE</span></span>
+<span><span class="co">#&gt;                   if (verbose) </span></span>
+<span><span class="co">#&gt;                     message(sprintf("name=%s:\t found in Rdata.rds", </span></span>
+<span><span class="co">#&gt;                       name), domain = NA)</span></span>
+<span><span class="co">#&gt;                   thispkg &lt;- sub(".*/([^/]*)/data$", "\\1", p)</span></span>
+<span><span class="co">#&gt;                   thispkg &lt;- sub("_.*$", "", thispkg)</span></span>
+<span><span class="co">#&gt;                   thispkg &lt;- paste0("package:", thispkg)</span></span>
+<span><span class="co">#&gt;                   objs &lt;- rds[[name]]</span></span>
+<span><span class="co">#&gt;                   lazyLoad(file.path(p, "Rdata"), envir = tmp_env, </span></span>
+<span><span class="co">#&gt;                     filter = function(x) x %in% objs)</span></span>
+<span><span class="co">#&gt;                   break</span></span>
+<span><span class="co">#&gt;                 }</span></span>
+<span><span class="co">#&gt;                 else if (verbose) </span></span>
+<span><span class="co">#&gt;                   message(sprintf("name=%s:\t NOT found in names() of Rdata.rds, i.e.,\n\t%s\n", </span></span>
+<span><span class="co">#&gt;                     name, paste(names(rds), collapse = ",")), </span></span>
+<span><span class="co">#&gt;                     domain = NA)</span></span>
+<span><span class="co">#&gt;             }</span></span>
+<span><span class="co">#&gt;             files &lt;- list.files(p, full.names = TRUE)</span></span>
+<span><span class="co">#&gt;             files &lt;- files[grep(name, files, fixed = TRUE)]</span></span>
+<span><span class="co">#&gt;             if (length(files) &gt; 1L) {</span></span>
+<span><span class="co">#&gt;                 o &lt;- match(fileExt(files), dataExts, nomatch = 100L)</span></span>
+<span><span class="co">#&gt;                 paths0 &lt;- dirname(files)</span></span>
+<span><span class="co">#&gt;                 paths0 &lt;- factor(paths0, levels = unique(paths0))</span></span>
+<span><span class="co">#&gt;                 files &lt;- files[order(paths0, o)]</span></span>
+<span><span class="co">#&gt;             }</span></span>
+<span><span class="co">#&gt;             if (length(files)) {</span></span>
+<span><span class="co">#&gt;                 for (file in files) {</span></span>
+<span><span class="co">#&gt;                   if (verbose) </span></span>
+<span><span class="co">#&gt;                     message("name=", name, ":\t file= ...", .Platform$file.sep, </span></span>
+<span><span class="co">#&gt;                       basename(file), "::\t", appendLF = FALSE, </span></span>
+<span><span class="co">#&gt;                       domain = NA)</span></span>
+<span><span class="co">#&gt;                   ext &lt;- fileExt(file)</span></span>
+<span><span class="co">#&gt;                   if (basename(file) != paste0(name, ".", ext)) </span></span>
+<span><span class="co">#&gt;                     found &lt;- FALSE</span></span>
+<span><span class="co">#&gt;                   else {</span></span>
+<span><span class="co">#&gt;                     found &lt;- TRUE</span></span>
+<span><span class="co">#&gt;                     switch(ext, R = , r = {</span></span>
+<span><span class="co">#&gt;                       library("utils")</span></span>
+<span><span class="co">#&gt;                       sys.source(file, chdir = TRUE, envir = tmp_env)</span></span>
+<span><span class="co">#&gt;                     }, RData = , rdata = , rda = load(file, envir = tmp_env), </span></span>
+<span><span class="co">#&gt;                       TXT = , txt = , tab = , tab.gz = , tab.bz2 = , </span></span>
+<span><span class="co">#&gt;                       tab.xz = , txt.gz = , txt.bz2 = , txt.xz = assign(name, </span></span>
+<span><span class="co">#&gt;                         my_read_table(file, header = TRUE, as.is = FALSE), </span></span>
+<span><span class="co">#&gt;                         envir = tmp_env), CSV = , csv = , csv.gz = , </span></span>
+<span><span class="co">#&gt;                       csv.bz2 = , csv.xz = assign(name, my_read_table(file, </span></span>
+<span><span class="co">#&gt;                         header = TRUE, sep = ";", as.is = FALSE), </span></span>
+<span><span class="co">#&gt;                         envir = tmp_env), found &lt;- FALSE)</span></span>
+<span><span class="co">#&gt;                   }</span></span>
+<span><span class="co">#&gt;                   if (found) </span></span>
+<span><span class="co">#&gt;                     break</span></span>
+<span><span class="co">#&gt;                 }</span></span>
+<span><span class="co">#&gt;                 if (verbose) </span></span>
+<span><span class="co">#&gt;                   message(if (!found) </span></span>
+<span><span class="co">#&gt;                     "*NOT* ", "found", domain = NA)</span></span>
+<span><span class="co">#&gt;             }</span></span>
+<span><span class="co">#&gt;             if (found) </span></span>
+<span><span class="co">#&gt;                 break</span></span>
+<span><span class="co">#&gt;         }</span></span>
+<span><span class="co">#&gt;         if (!found) {</span></span>
+<span><span class="co">#&gt;             warning(gettextf("data set %s not found", sQuote(name)), </span></span>
+<span><span class="co">#&gt;                 domain = NA)</span></span>
+<span><span class="co">#&gt;         }</span></span>
+<span><span class="co">#&gt;         else if (!overwrite) {</span></span>
+<span><span class="co">#&gt;             for (o in ls(envir = tmp_env, all.names = TRUE)) {</span></span>
+<span><span class="co">#&gt;                 if (exists(o, envir = envir, inherits = FALSE)) </span></span>
+<span><span class="co">#&gt;                   warning(gettextf("an object named %s already exists and will not be overwritten", </span></span>
+<span><span class="co">#&gt;                     sQuote(o)))</span></span>
+<span><span class="co">#&gt;                 else assign(o, get(o, envir = tmp_env, inherits = FALSE), </span></span>
+<span><span class="co">#&gt;                   envir = envir)</span></span>
+<span><span class="co">#&gt;             }</span></span>
+<span><span class="co">#&gt;             rm(tmp_env)</span></span>
+<span><span class="co">#&gt;         }</span></span>
+<span><span class="co">#&gt;     }</span></span>
+<span><span class="co">#&gt;     invisible(names)</span></span>
+<span><span class="co">#&gt; }</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x10f68ee78&gt;</span></span>
+<span><span class="co">#&gt; &lt;environment: namespace:utils&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get data for multiple indicators at once</span></span>
+<span><span class="va">multi_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span>indicator_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MBOPCAHDPPECY"</span>, <span class="st">"MBOPCCHDPPECY"</span><span class="op">)</span>,</span>
+<span>                            period_to <span class="op">=</span> <span class="st">"20231231"</span>,</span>
+<span>                            period_from <span class="op">=</span> <span class="st">"20201031"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.</span></span>
+<span><span class="va">multi_data</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'multi_data' not found</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get raw data without processing (returns raw CSV data)</span></span>
+<span><span class="va">raw_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, process_data <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get data with both filters and rename the value column</span></span>
+<span><span class="va">spending</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>,</span>
+<span>                           period_from <span class="op">=</span> <span class="st">"20121231"</span>,</span>
+<span>                           period_to <span class="op">=</span> <span class="st">"20241231"</span>,</span>
+<span>                           rename_value <span class="op">=</span> <span class="st">"government_spending"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.</span></span>
+<span><span class="va">spending</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'spending' not found</span></span></code></pre></div>
 </div>
-</section><section class="level3"><h3 id="filter-and-process-data-series">3. Filter and process data series<a class="anchor" aria-label="anchor" href="#filter-and-process-data-series"></a>
-</h3>
-<p>Use convenience functions for common filtering operations:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get December data for all available years</span></span>
-<span><span class="va">dec_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_series.html">arad_get_series</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, filter_month <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Get data for a specific year</span></span>
-<span><span class="va">data_2023</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_series.html">arad_get_series</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, filter_year <span class="op">=</span> <span class="fl">2023</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Get data with both filters and rename the value column</span></span>
-<span><span class="va">spending</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_series.html">arad_get_series</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, </span>
-<span>                           filter_month <span class="op">=</span> <span class="fl">12</span>,</span>
-<span>                           filter_year <span class="op">=</span> <span class="fl">2023</span>,</span>
-<span>                           rename_value <span class="op">=</span> <span class="st">"government_spending"</span><span class="op">)</span></span></code></pre></div>
 </div>
-</section></section><section class="level2"><h2 id="working-with-metadata-and-categories">Working with metadata and categories<a class="anchor" aria-label="anchor" href="#working-with-metadata-and-categories"></a>
+<div class="section level2">
+<h2 id="working-with-indicator-structure">Working with indicator structure<a class="anchor" aria-label="anchor" href="#working-with-indicator-structure"></a>
 </h2>
-<p>Explore the structure and organization of the data:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get metadata for specific indicators</span></span>
-<span><span class="va">metadata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_metadata.html">arad_get_metadata</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, <span class="st">"SRUMD08401C"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Get the hierarchical category structure</span></span>
-<span><span class="va">categories</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_categories.html">arad_get_categories</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Get subcategories of a specific parent category</span></span>
-<span><span class="va">subcategories</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_categories.html">arad_get_categories</a></span><span class="op">(</span>parent_category <span class="op">=</span> <span class="st">"monetary"</span><span class="op">)</span></span></code></pre></div>
+<p>You can explore how indicators are organized using the dimension and
+tree functions covered in the discovery section above. These provide
+insights into the hierarchical structure and dimensional organization of
+the ARAD data.</p>
 </div>
-</section><section class="level2"><h2 id="utility-functions">Utility functions<a class="anchor" aria-label="anchor" href="#utility-functions"></a>
+<div class="section level2">
+<h2 id="utility-functions">Utility functions<a class="anchor" aria-label="anchor" href="#utility-functions"></a>
 </h2>
 <p>The package includes several helper functions:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Validate indicator ID format</span></span>
 <span><span class="va">valid_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_validate_indicators.html">arad_validate_indicators</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, <span class="st">"INVALID_ID"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Parse ARAD date format manually</span></span>
+<span><span class="va">valid_ids</span></span>
+<span><span class="co">#&gt; [1]  TRUE FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Parse ARAD date format manually</span></span>
 <span><span class="va">dates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_parse_date.html">arad_parse_date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"20231201"</span>, <span class="st">"20231101"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Format data with consistent structure and custom value name</span></span>
-<span><span class="va">formatted_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_format_data.html">arad_format_data</a></span><span class="op">(</span><span class="va">raw_data</span>, value_name <span class="op">=</span> <span class="st">"gdp"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Get example indicator IDs for testing</span></span>
-<span><span class="va">examples</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_example_indicators.html">arad_example_indicators</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">dates</span></span>
+<span><span class="co">#&gt; [1] "2023-12-01 UTC" "2023-11-01 UTC"</span></span></code></pre></div>
 </div>
-</section><section class="level2"><h2 id="complete-analysis-example">Complete analysis example<a class="anchor" aria-label="anchor" href="#complete-analysis-example"></a>
+<div class="section level2">
+<h2 id="complete-analysis-example">Complete analysis example<a class="anchor" aria-label="anchor" href="#complete-analysis-example"></a>
 </h2>
 <p>Here’s a full workflow for analyzing Czech economic data:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">cnbrrr</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://petrbouchal.xyz/cnbrrr/" class="external-link">cnbrrr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># 1. Find relevant indicators</span></span>
-<span><span class="va">indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_indicators.html">arad_get_indicators</a></span><span class="op">(</span>search <span class="op">=</span> <span class="st">"GDP"</span><span class="op">)</span></span>
+<span><span class="va">indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>base_id <span class="op">=</span> <span class="st">"SHDPZDR"</span>, filter <span class="op">=</span> <span class="st">"HDP"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">indicators</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># 2. Get the data (assuming we found a GDP indicator)</span></span>
-<span><span class="va">gdp_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_series.html">arad_get_series</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, </span>
-<span>                           filter_month <span class="op">=</span> <span class="fl">12</span>,  <span class="co"># December data only</span></span>
-<span>                           rename_value <span class="op">=</span> <span class="st">"gdp"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'indicators' not found</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 2. Get the data (assuming we found a GDP indicator)</span></span>
+<span><span class="va">gdp_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>,</span>
+<span>                           rename_value <span class="op">=</span> <span class="st">"gdp"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html" class="external-link">month</a></span><span class="op">(</span><span class="va">period</span><span class="op">)</span> <span class="op">==</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.</span></span>
 <span></span>
 <span><span class="co"># 3. Process and analyze</span></span>
-<span><span class="va">recent_gdp</span> <span class="op">&lt;-</span> <span class="va">gdp_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&gt;=</span> <span class="fl">2010</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">recent_gdp</span> <span class="op">&lt;-</span> <span class="va">gdp_data</span>  <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&gt;=</span> <span class="fl">2010</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    gdp_growth <span class="op">=</span> <span class="op">(</span><span class="va">gdp</span> <span class="op">/</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html" class="external-link">lag</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>,</span>
 <span>    is_recession <span class="op">=</span> <span class="va">gdp_growth</span> <span class="op">&lt;</span> <span class="fl">0</span></span>
 <span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'gdp_data' not found</span></span>
 <span></span>
 <span><span class="co"># 4. Summary statistics</span></span>
-<span><span class="va">gdp_summary</span> <span class="op">&lt;-</span> <span class="va">recent_gdp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">gdp_summary</span> <span class="op">&lt;-</span> <span class="va">recent_gdp</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
 <span>    mean_gdp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">gdp</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>    mean_growth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">gdp_growth</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
@@ -206,14 +426,16 @@
 <span>    latest_gdp <span class="op">=</span> <span class="va">gdp</span><span class="op">[</span><span class="va">year</span> <span class="op">==</span> <span class="va">latest_year</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
 <span>    recession_years <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">is_recession</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'recent_gdp' not found</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">gdp_summary</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># 5. Create visualization</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'gdp_summary' not found</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 5. Create visualization</span></span>
 <span><span class="va">gdp_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">recent_gdp</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#0000ff"</span>, size <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#0000ff"</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">recent_gdp</span>, <span class="va">is_recession</span><span class="op">)</span>, </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">recent_gdp</span>, <span class="va">is_recession</span><span class="op">)</span>,</span>
 <span>             color <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">3</span>, alpha <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"Czech GDP Trend"</span>,</span>
@@ -228,10 +450,12 @@
 <span>    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span>, color <span class="op">=</span> <span class="st">"gray60"</span><span class="op">)</span>,</span>
 <span>    text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#001F3F"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'recent_gdp' not found</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">gdp_plot</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># 6. Growth rate visualization</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'gdp_plot' not found</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 6. Growth rate visualization</span></span>
 <span><span class="va">growth_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">recent_gdp</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdp_growth</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">is_recession</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span>, color <span class="op">=</span> <span class="st">"gray50"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -251,167 +475,80 @@
 <span>    text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#001F3F"</span><span class="op">)</span>,</span>
 <span>    legend.position <span class="op">=</span> <span class="st">"bottom"</span></span>
 <span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'recent_gdp' not found</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">growth_plot</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">growth_plot</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'growth_plot' not found</span></span></code></pre></div>
 </div>
-</section><section class="level2"><h2 id="error-handling">Error handling<a class="anchor" aria-label="anchor" href="#error-handling"></a>
+<div class="section level2">
+<h2 id="data-format-and-structure">Data format and structure<a class="anchor" aria-label="anchor" href="#data-format-and-structure"></a>
 </h2>
-<p>The package includes comprehensive error handling for common issues:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Invalid API key</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="op">{</span></span>
-<span>  <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, api_key <span class="op">=</span> <span class="st">"invalid_key"</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Invalid indicator ID</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="op">{</span></span>
-<span>  <span class="fu"><a href="../reference/arad_get_metadata.html">arad_get_metadata</a></span><span class="op">(</span><span class="st">"TOTALLY_INVALID_ID"</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Empty indicator list</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="op">{</span></span>
-<span>  <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Network/API errors are caught and reported clearly</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="op">{</span></span>
-<span>  <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, base_url <span class="op">=</span> <span class="st">"https://invalid.url/api"</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-</div>
-</section><section class="level2"><h2 id="data-format-and-structure">Data format and structure<a class="anchor" aria-label="anchor" href="#data-format-and-structure"></a>
-</h2>
-<p>All functions return data frames with consistent column structure:</p>
+<p>All functions return data frames with consistent column
+structure:</p>
 <ul>
 <li>
-<strong><code>period</code></strong>: Date object (converted from YYYYMMDD format)</li>
+<strong><code>period</code></strong>: Date object (converted from
+YYYYMMDD format)</li>
 <li>
 <strong><code>value</code></strong>: Numeric data values</li>
 <li>
 <strong><code>year</code></strong>: Extracted year from period</li>
 <li>
-<strong><code>month</code></strong>: Extracted month from period<br>
-</li>
+<strong><code>month</code></strong>: Extracted month from
+period</li>
 <li>
-<strong><code>quarter</code></strong>: Extracted quarter from period (when applicable)</li>
+<strong><code>quarter</code></strong>: Extracted quarter from period
+(when applicable)</li>
 </ul>
-<p>Additional columns may be present depending on the specific data series.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="downlit sourceCode r">
+<p>Additional columns may be present depending on the specific data
+series.</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Example of typical data structure</span></span>
 <span><span class="va">sample_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">sample_data</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">sample_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'sample_data' not found</span></span></code></pre></div>
 </div>
-</section><section class="level2"><h2 id="api-endpoints-used">API endpoints used<a class="anchor" aria-label="anchor" href="#api-endpoints-used"></a>
+<div class="section level2">
+<h2 id="api-endpoints-used">API endpoints used<a class="anchor" aria-label="anchor" href="#api-endpoints-used"></a>
 </h2>
 <p>The package accesses these ARAD API endpoints:</p>
 <ul>
 <li>
-<strong><code>/aradb/api/v1/data</code></strong> - Time series data retrieval</li>
+<strong><code>/aradb/api/v1/data</code></strong> - Time series data
+retrieval</li>
 <li>
-<strong><code>/aradb/api/v1/indicators</code></strong> - Available indicators listing</li>
+<strong><code>/aradb/api/v1/indicators</code></strong> - Available
+indicators listing</li>
 <li>
-<strong><code>/aradb/api/v1/metadata</code></strong> - Indicator metadata and descriptions</li>
+<strong><code>/aradb/api/v1/indicators-dims</code></strong> -
+Indicator dimensional structure</li>
 <li>
-<strong><code>/aradb/api/v1/categories</code></strong> - Data category hierarchy</li>
-</ul></section><section class="level2"><h2 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a>
+<strong><code>/aradb/api/v1/indicators-tree</code></strong> -
+Hierarchical indicator tree structure</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a>
 </h2>
 <ul>
-<li>Explore the <a href="../reference/index.html">function reference</a> for detailed documentation</li>
+<li>Explore the <a href="../reference/index.html">function reference</a>
+for detailed documentation</li>
 <li>Check out additional examples in the <a href="../articles/index.html">articles</a> section</li>
-<li>Visit the <a href="https://www.cnb.cz/arad/" class="external-link">Czech National Bank ARAD website</a> for more information about available data series</li>
+<li>Visit the <a href="https://www.cnb.cz/arad/" class="external-link">Czech National Bank
+ARAD website</a> for more information about available data series</li>
 <li>Report issues or contribute at the <a href="https://github.com/petrbouchal/cnbrrr" class="external-link">GitHub repository</a>
 </li>
-</ul></section><script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
-        }
-      }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'light-border',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config);
-    }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
-      } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
-        });
-      }
-    }
-  });
-  </script></main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+</ul>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
 
 
+
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Your Name.</p>
+  <p>Developed by <a href="https://petrbouchal.xyz" class="external-link">Petr Bouchal</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">

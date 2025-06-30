@@ -10,8 +10,8 @@
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="https://fonts.bunny.net/css?family=IBM%20Plex%20Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&amp;display=auto" rel="stylesheet">
 <link href="https://fonts.bunny.net/css?family=IBM%20Plex%20Code:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&amp;display=auto" rel="stylesheet">
-<link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="An R package for using data from the Czech National Bank ARAD API">
 <meta name="description" content="Discover, retrieve and use economic and financial data from the Czech National Bank's ARAD API.">
 <meta property="og:description" content="Discover, retrieve and use economic and financial data from the Czech National Bank's ARAD API.">
@@ -24,7 +24,7 @@
 
     <a class="navbar-brand me-2" href="index.html">cnbrrr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,6 +35,7 @@
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="articles/cnbrrr.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item dropdown">
@@ -45,6 +46,7 @@
     <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
   </ul>
 </li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/petrbouchal/cnbrrr/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://petrbouchal.xyz"><span class="fa fa-asterisk fa-lg"></span></a></li>
       </ul>
 </div>
@@ -56,213 +58,109 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="cnbrrr-interface-to-czech-national-bank-arad-data-api">cnbrrr: Interface to Czech National Bank ARAD Data API<a class="anchor" aria-label="anchor" href="#cnbrrr-interface-to-czech-national-bank-arad-data-api"></a>
 </h1></div>
-<p>cnbrrr Package 2025-06-27</p>
-<ul>
-<li>
-<a href="#cnbrrr">cnbrrr</a>
-<ul>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#setup">Setup</a></li>
-<li>
-<a href="#core-functions">Core Functions</a>
-<ul>
-<li><a href="#get-data-for-specific-indicators">Get Data for Specific Indicators</a></li>
-<li><a href="#get-and-filter-data-series">Get and Filter Data Series</a></li>
-<li><a href="#discover-available-data">Discover Available Data</a></li>
-<li><a href="#get-metadata-and-categories">Get Metadata and Categories</a></li>
-</ul>
-</li>
-<li><a href="#utility-functions">Utility Functions</a></li>
-<li><a href="#example-workflow">Example Workflow</a></li>
-<li><a href="#error-handling">Error Handling</a></li>
-<li><a href="#data-format">Data Format</a></li>
-<li><a href="#api-endpoints">API Endpoints</a></li>
-<li><a href="#license">License</a></li>
-</ul>
-</li>
-</ul>
+<p>Petr Bouchal</p>
 </div>
 <div class="section level1">
 <h1 id="cnbrrr">cnbrrr<a class="anchor" aria-label="anchor" href="#cnbrrr"></a>
 </h1>
 <p>R package for accessing data from the Czech National Bank’s ARAD (Aggregated data of the CNB) API.</p>
+<p>The package is not affiliated in any way to the Czech National Bank but I am grateful to them for proving the data and maintaining the infrastructure.</p>
+<div class="section level2">
+<h2 id="about-arad">About ARAD<a class="anchor" aria-label="anchor" href="#about-arad"></a>
+</h2>
+<p><a href="https://www.cnb.cz/arad/" class="external-link">ARAD</a> is the Czech National Bank’s public database containing aggregated economic and financial data. The system provides access to:</p>
+<ul>
+<li>
+<strong>Monetary policy indicators</strong> - interest rates, money supply, exchange rates</li>
+<li>
+<strong>Financial market data</strong> - banking sector statistics, capital market indicators<br>
+</li>
+<li>
+<strong>Macroeconomic statistics</strong> - GDP, inflation, employment, government finances</li>
+<li>
+<strong>Balance of payments</strong> - current account, capital flows, international reserves</li>
+<li>
+<strong>International comparisons</strong> - harmonized indicators across countries</li>
+</ul>
+<p>The data spans from the 1990s to present, with most series updated monthly or quarterly. All data comes from the CNB’s statistical processing and external statistical sources.</p>
+<p>Comprehensive user guidance is at <a href="https://www.cnb.cz/arad/#/cs/documentation" class="external-link uri">https://www.cnb.cz/arad/#/cs/documentation</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="package-features">Package features<a class="anchor" aria-label="anchor" href="#package-features"></a>
+</h2>
+<p>The <code>cnbrrr</code> package provides:</p>
+<ul>
+<li>
+<strong>Data discovery</strong>: listing indicators contained in a set or base</li>
+<li>
+<strong>Metadata exploration</strong> to discover available indicators and categories</li>
+<li>
+<strong>Simple data retrieval</strong> with automatic date parsing and formatting</li>
+<li>
+<strong>Consistent data structure</strong> across all functions</li>
+</ul>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Install from source</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"petrbouchal/cnbrrr"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Or install locally</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Install from GitHub</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"petrbouchal/cnbrrr"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
 </h2>
-<p>Set your ARAD API key as an environment variable:</p>
+<ul>
+<li>obtain an API key from the Czech National Bank (requires registration)</li>
+<li>set it as an environment variable:</li>
+</ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>ARAD_API_KEY <span class="op">=</span> <span class="st">"your_api_key_here"</span><span class="op">)</span></span></code></pre></div>
-<p>Alternatively, you can pass the API key directly to function calls.</p>
 </div>
 <div class="section level2">
-<h2 id="core-functions">Core Functions<a class="anchor" aria-label="anchor" href="#core-functions"></a>
+<h2 id="quick-example">Quick example<a class="anchor" aria-label="anchor" href="#quick-example"></a>
 </h2>
-<div class="section level3">
-<h3 id="get-data-for-specific-indicators">Get Data for Specific Indicators<a class="anchor" aria-label="anchor" href="#get-data-for-specific-indicators"></a>
-</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">cnbrrr</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://petrbouchal.xyz/cnbrrr/" class="external-link">cnbrrr</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Get data for a single indicator</span></span>
-<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Get data for multiple indicators</span></span>
-<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, <span class="st">"SRUMD08401C"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Get raw data without processing</span></span>
-<span><span class="va">raw_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, process_data <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="get-and-filter-data-series">Get and Filter Data Series<a class="anchor" aria-label="anchor" href="#get-and-filter-data-series"></a>
-</h3>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get December data for all years</span></span>
-<span><span class="va">dec_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_series.html">arad_get_series</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, filter_month <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Get data for 2023 only</span></span>
-<span><span class="va">data_2023</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_series.html">arad_get_series</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, filter_year <span class="op">=</span> <span class="fl">2023</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Get data with custom value column name</span></span>
-<span><span class="va">spending</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_series.html">arad_get_series</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, </span>
-<span>                           filter_month <span class="op">=</span> <span class="fl">12</span>,</span>
-<span>                           rename_value <span class="op">=</span> <span class="st">"spending"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="discover-available-data">Discover Available Data<a class="anchor" aria-label="anchor" href="#discover-available-data"></a>
-</h3>
+<span><span class="co"># List available indicators from set (sestava), filter by name</span></span>
+<span><span class="va">indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>set_id <span class="op">=</span> <span class="fl">1032</span>, filter <span class="op">=</span> <span class="st">"domácnost"</span><span class="op">)</span></span>
+<span><span class="va">indicators</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># A tibble: 152 × 7</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>   indicator_id  indicator_name     frequency_code frequency_name unit_mult_code</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>   <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>         <span class="er">&lt;</span>chr<span class="sc">&gt;</span>              <span class="er">&lt;</span>chr<span class="sc">&gt;</span>          <span class="er">&lt;</span>chr<span class="sc">&gt;</span>          <span class="er">&lt;</span>chr<span class="sc">&gt;</span>         </span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a> <span class="dv">1</span> SFU0QS15A01T  Finanční účty, Ak… Q              Čtvrtletní     <span class="dv">6</span>             </span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a> <span class="dv">2</span> SFU0QS15A01LE Finanční účty, Ak… Q              Čtvrtletní     <span class="dv">6</span>             </span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a> <span class="dv">3</span> SFU0QS15L01T  Finanční účty, Ak… Q              Čtvrtletní     <span class="dv">6</span>             </span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a> <span class="dv">4</span> SFU0QS15L01LE Finanční účty, Ak… Q              Čtvrtletní     <span class="dv">6</span>             </span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a> <span class="dv">5</span> SFU0QS14A01T  Finanční účty, Ak… Q              Čtvrtletní     <span class="dv">6</span>             </span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a> <span class="dv">6</span> SFU0QS14A01LE Finanční účty, Ak… Q              Čtvrtletní     <span class="dv">6</span>             </span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a> <span class="dv">7</span> SFU0QS14L01T  Finanční účty, Ak… Q              Čtvrtletní     <span class="dv">6</span>             </span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a> <span class="dv">8</span> SFU0QS14L01LE Finanční účty, Ak… Q              Čtvrtletní     <span class="dv">6</span>             </span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a> <span class="dv">9</span> SFU2QS14A05LE Finanční účty, F2… Q              Čtvrtletní     <span class="dv">6</span>             </span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="dv">10</span> SFU2QS15A05T  Finanční účty, F2… Q              Čtvrtletní     <span class="dv">6</span>             </span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co"># ℹ 142 more rows</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co"># ℹ 2 more variables: unit_mult_name &lt;chr&gt;, unit &lt;chr&gt;</span></span></code></pre></div>
+<p>Note there is no way to list all available indicators or to list bases and sets - you need to have some idea of what you are looking for - for that, check the website.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get list of all available indicators</span></span>
-<span><span class="va">indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_indicators.html">arad_get_indicators</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Search for specific indicators</span></span>
-<span><span class="va">monetary_indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_indicators.html">arad_get_indicators</a></span><span class="op">(</span>search <span class="op">=</span> <span class="st">"monetary"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Filter by category</span></span>
-<span><span class="va">category_indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_indicators.html">arad_get_indicators</a></span><span class="op">(</span>category <span class="op">=</span> <span class="st">"fiscal"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="get-metadata-and-categories">Get Metadata and Categories<a class="anchor" aria-label="anchor" href="#get-metadata-and-categories"></a>
-</h3>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get metadata for specific indicators</span></span>
-<span><span class="va">metadata</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_metadata.html">arad_get_metadata</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, <span class="st">"SRUMD08401C"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Get all available categories</span></span>
-<span><span class="va">categories</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_categories.html">arad_get_categories</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Get subcategories of a parent category</span></span>
-<span><span class="va">subcategories</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_categories.html">arad_get_categories</a></span><span class="op">(</span>parent_category <span class="op">=</span> <span class="st">"monetary"</span><span class="op">)</span></span></code></pre></div>
-</div>
-</div>
-<div class="section level2">
-<h2 id="utility-functions">Utility Functions<a class="anchor" aria-label="anchor" href="#utility-functions"></a>
-</h2>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Validate indicator IDs</span></span>
-<span><span class="va">valid_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_validate_indicators.html">arad_validate_indicators</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, <span class="st">"INVALID_ID"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Parse ARAD date format</span></span>
-<span><span class="va">dates</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_parse_date.html">arad_parse_date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"20231201"</span>, <span class="st">"20231101"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Format data with consistent structure</span></span>
-<span><span class="va">formatted_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_format_data.html">arad_format_data</a></span><span class="op">(</span><span class="va">raw_data</span>, value_name <span class="op">=</span> <span class="st">"gdp"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Get example indicator IDs</span></span>
-<span><span class="va">examples</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_example_indicators.html">arad_example_indicators</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="example-workflow">Example Workflow<a class="anchor" aria-label="anchor" href="#example-workflow"></a>
-</h2>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">cnbrrr</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># 1. Discover available indicators</span></span>
-<span><span class="va">indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_indicators.html">arad_get_indicators</a></span><span class="op">(</span>search <span class="op">=</span> <span class="st">"GDP"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">indicators</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># 2. Get data for a specific indicator</span></span>
-<span><span class="va">gdp_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_series.html">arad_get_series</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, </span>
-<span>                           filter_month <span class="op">=</span> <span class="fl">12</span>,  <span class="co"># December data only</span></span>
-<span>                           rename_value <span class="op">=</span> <span class="st">"gdp"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># 3. Analyze the data</span></span>
-<span><span class="va">gdp_summary</span> <span class="op">&lt;-</span> <span class="va">gdp_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&gt;=</span> <span class="fl">2010</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
-<span>    mean_gdp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">gdp</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    latest_year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">year</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    latest_gdp <span class="op">=</span> <span class="va">gdp</span><span class="op">[</span><span class="va">year</span> <span class="op">==</span> <span class="va">latest_year</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
-<span>  <span class="op">)</span></span>
-<span></span>
-<span><span class="co"># 4. Visualize</span></span>
-<span><span class="va">gdp_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&gt;=</span> <span class="fl">2010</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"GDP Trend"</span>, </span>
-<span>       x <span class="op">=</span> <span class="st">"Year"</span>, </span>
-<span>       y <span class="op">=</span> <span class="st">"GDP"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="error-handling">Error Handling<a class="anchor" aria-label="anchor" href="#error-handling"></a>
-</h2>
-<p>The package includes comprehensive error handling:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Invalid API key</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu"><a href="reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, api_key <span class="op">=</span> <span class="st">"invalid"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: Failed to retrieve data from ARAD API: ...</span></span>
-<span></span>
-<span><span class="co"># Invalid indicator ID</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu"><a href="reference/arad_get_metadata.html">arad_get_metadata</a></span><span class="op">(</span><span class="st">"INVALID_ID"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: At least one indicator ID must be provided.</span></span>
-<span></span>
-<span><span class="co"># Network issues are handled gracefully</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="data-format">Data Format<a class="anchor" aria-label="anchor" href="#data-format"></a>
-</h2>
-<p>All functions return data frames with consistent column naming:</p>
-<ul>
-<li>
-<code>period</code>: Date object (parsed from YYYYMMDD format)</li>
-<li>
-<code>value</code>: Numeric data values</li>
-<li>
-<code>year</code>: Extracted year from period</li>
-<li>
-<code>month</code>: Extracted month from period</li>
-<li>
-<code>quarter</code>: Extracted quarter from period (when applicable)</li>
-</ul>
-</div>
-<div class="section level2">
-<h2 id="api-endpoints">API Endpoints<a class="anchor" aria-label="anchor" href="#api-endpoints"></a>
-</h2>
-<p>The package accesses these ARAD API endpoints:</p>
-<ul>
-<li>
-<code>/aradb/api/v1/data</code> - Time series data</li>
-<li>
-<code>/aradb/api/v1/indicators</code> - Available indicators</li>
-<li>
-<code>/aradb/api/v1/metadata</code> - Indicator metadata</li>
-<li>
-<code>/aradb/api/v1/categories</code> - Data categories</li>
-</ul>
+<code class="sourceCode R"><span><span class="co"># Get data for a specific indicator  </span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span><span class="op">)</span></span>
+<span><span class="va">data</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># A tibble: 389 × 6</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>   indicator_id snapshot_id period                value  year month</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>   <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>        <span class="er">&lt;</span>chr<span class="sc">&gt;</span>       <span class="er">&lt;</span>dttm<span class="sc">&gt;</span>                <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a> <span class="dv">1</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2025-05-31</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">9.45e11</span>  <span class="dv">2025</span>     <span class="dv">5</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a> <span class="dv">2</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2025-04-30</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">7.49e11</span>  <span class="dv">2025</span>     <span class="dv">4</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a> <span class="dv">3</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2025-03-31</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">5.68e11</span>  <span class="dv">2025</span>     <span class="dv">3</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a> <span class="dv">4</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2025-02-28</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">3.65e11</span>  <span class="dv">2025</span>     <span class="dv">2</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a> <span class="dv">5</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2025-01-31</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">1.73e11</span>  <span class="dv">2025</span>     <span class="dv">1</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a> <span class="dv">6</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2024-12-31</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">2.24e12</span>  <span class="dv">2024</span>    <span class="dv">12</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a> <span class="dv">7</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2024-11-30</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">2.00e12</span>  <span class="dv">2024</span>    <span class="dv">11</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a> <span class="dv">8</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2024-10-31</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">1.80e12</span>  <span class="dv">2024</span>    <span class="dv">10</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a> <span class="dv">9</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2024-09-30</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">1.63e12</span>  <span class="dv">2024</span>     <span class="dv">9</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="dv">10</span> SRUMD08402C  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="dv">2024-08-31</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="fl">1.45e12</span>  <span class="dv">2024</span>     <span class="dv">8</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co"># ℹ 379 more rows</span></span></code></pre></div>
+<p>See the <a href="articles/cnbrrr.html">Get started</a> vignette for detailed workflows and examples.</p>
 </div>
 <div class="section level2">
 <h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
@@ -271,12 +169,19 @@
 </div>
 </div>
 
-  </main><aside class="col-md-3"><div class="license">
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/petrbouchal/cnbrrr/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/petrbouchal/cnbrrr/issues" class="external-link">Report a bug</a></li>
+</ul>
+</div>
+
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
 
@@ -291,7 +196,8 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Your Name <br><small class="roles"> Maintainer </small>   </li>
+<li>
+<a href="https://petrbouchal.xyz" class="external-link">Petr Bouchal</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0471-716X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 
@@ -302,7 +208,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Your Name.</p>
+  <p>Developed by <a href="https://petrbouchal.xyz" class="external-link">Petr Bouchal</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">

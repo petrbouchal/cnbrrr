@@ -1,19 +1,18 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
-<url><loc>https://petrbouchal.xyz/cnbrrr/404.html</loc></url>
-<url><loc>https://petrbouchal.xyz/cnbrrr/LICENSE-text.html</loc></url>
-<url><loc>https://petrbouchal.xyz/cnbrrr/articles/cnbrrr.html</loc></url>
-<url><loc>https://petrbouchal.xyz/cnbrrr/articles/index.html</loc></url>
-<url><loc>https://petrbouchal.xyz/cnbrrr/authors.html</loc></url>
-<url><loc>https://petrbouchal.xyz/cnbrrr/index.html</loc></url>
-<url><loc>https://petrbouchal.xyz/cnbrrr/reference/arad_example_indicators.html</loc></url>
-<url><loc>https://petrbouchal.xyz/cnbrrr/reference/arad_format_data.html</loc></url>
-<url><loc>https://petrbouchal.xyz/cnbrrr/reference/arad_get_categories.html</loc></url>
-<url><loc>https://petrbouchal.xyz/cnbrrr/reference/arad_get_data.html</loc></url>
-<url><loc>https://petrbouchal.xyz/cnbrrr/reference/arad_get_indicators.html</loc></url>
-<url><loc>https://petrbouchal.xyz/cnbrrr/reference/arad_get_metadata.html</loc></url>
-<url><loc>https://petrbouchal.xyz/cnbrrr/reference/arad_get_series.html</loc></url>
-<url><loc>https://petrbouchal.xyz/cnbrrr/reference/arad_parse_date.html</loc></url>
-<url><loc>https://petrbouchal.xyz/cnbrrr/reference/arad_validate_indicators.html</loc></url>
-<url><loc>https://petrbouchal.xyz/cnbrrr/reference/index.html</loc></url>
+<url><loc>http://petrbouchal.xyz/cnbrrr/404.html</loc></url>
+<url><loc>http://petrbouchal.xyz/cnbrrr/LICENSE-text.html</loc></url>
+<url><loc>http://petrbouchal.xyz/cnbrrr/LICENSE.html</loc></url>
+<url><loc>http://petrbouchal.xyz/cnbrrr/articles/cnbrrr.html</loc></url>
+<url><loc>http://petrbouchal.xyz/cnbrrr/articles/index.html</loc></url>
+<url><loc>http://petrbouchal.xyz/cnbrrr/authors.html</loc></url>
+<url><loc>http://petrbouchal.xyz/cnbrrr/index.html</loc></url>
+<url><loc>http://petrbouchal.xyz/cnbrrr/news/index.html</loc></url>
+<url><loc>http://petrbouchal.xyz/cnbrrr/reference/arad_get_data.html</loc></url>
+<url><loc>http://petrbouchal.xyz/cnbrrr/reference/arad_indicators_dims.html</loc></url>
+<url><loc>http://petrbouchal.xyz/cnbrrr/reference/arad_indicators_tree.html</loc></url>
+<url><loc>http://petrbouchal.xyz/cnbrrr/reference/arad_list_indicators.html</loc></url>
+<url><loc>http://petrbouchal.xyz/cnbrrr/reference/arad_parse_date.html</loc></url>
+<url><loc>http://petrbouchal.xyz/cnbrrr/reference/arad_validate_indicators.html</loc></url>
+<url><loc>http://petrbouchal.xyz/cnbrrr/reference/index.html</loc></url>
 </urlset>
 
