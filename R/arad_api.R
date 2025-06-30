@@ -93,18 +93,19 @@ arad_get_data <- function(indicator_ids = NULL,
   if (!is.null(period_from)) file_id <- paste(file_id, period_from, sep = "_")
   if (!is.null(period_to)) file_id <- paste(file_id, period_to, sep = "_")
   if (!is.null(months_before)) file_id <- paste(file_id, months_before, sep = "_")
-  
+
   file_path <- file.path(dest_dir, paste0("arad_", file_id, ".csv"))
-  
+
   if (file.exists(file_path) && !force_redownload) {
     message("File already exists at ", file_path, ". Loading from cache. Use force_redownload = TRUE to redownload.")
     if (!process_data) {
       return(readBin(file_path, "raw", file.info(file_path)$size))
     }
-    data <- readr::read_csv2(file_path,
-                            locale = readr::locale(encoding = encoding),
-                            col_types = "cccd")
-    
+    data <- readr::read_delim(file_path, delim = ";",
+                              locale = readr::locale(decimal_mark = ",", grouping_mark = " ",
+                                                     encoding = encoding),
+                              col_types = "cccd")
+
     if (nrow(data) > 0 && "period" %in% names(data)) {
       data <- data |>
         dplyr::mutate(
@@ -113,11 +114,11 @@ arad_get_data <- function(indicator_ids = NULL,
           month = lubridate::month(period)
         )
     }
-    
+
     if (!is.null(rename_value) && "value" %in% names(data)) {
       data <- data |> dplyr::rename(!!rename_value := value)
     }
-    
+
     return(data)
   }
 
@@ -150,9 +151,10 @@ arad_get_data <- function(indicator_ids = NULL,
     return(readBin(file_path, "raw", file.info(file_path)$size))
   }
 
-  data <- readr::read_csv2(file_path,
-                          locale = readr::locale(encoding = encoding),
-                          col_types = "cccd")
+  data <- readr::read_delim(file_path,delim = ";",
+                            locale = readr::locale(decimal_mark = ",", grouping_mark = " ",
+                                                   encoding = encoding),
+                            col_types = "cccd")
 
   if (nrow(data) > 0 && "period" %in% names(data)) {
     data <- data |>
@@ -215,13 +217,13 @@ arad_get_data <- function(indicator_ids = NULL,
 #' selection_indicators <- arad_list_indicators(selection_id = "my_selection")
 #' }
 arad_list_indicators <- function(set_id = NULL,
-                                base_id = NULL,
-                                indicator_id_list = NULL,
-                                selection_id = NULL,
-                                filter = NULL,
-                                api_key = NULL,
-                                base_url = "https://www.cnb.cz/aradb/api/v1",
-                                encoding = "windows-1250") {
+                                 base_id = NULL,
+                                 indicator_id_list = NULL,
+                                 selection_id = NULL,
+                                 filter = NULL,
+                                 api_key = NULL,
+                                 base_url = "https://www.cnb.cz/aradb/api/v1",
+                                 encoding = "windows-1250") {
 
   if (is.null(api_key)) {
     api_key <- Sys.getenv("ARAD_API_KEY")
@@ -270,9 +272,10 @@ arad_list_indicators <- function(set_id = NULL,
 
   writeLines(rawToChar(raw_data), temp_file)
 
-  indicators <- readr::read_csv2(temp_file,
-                                locale = readr::locale(encoding = encoding),
-                                col_types = readr::cols(.default = "c"))
+  indicators <- readr::read_delim(temp_file, delim = ";",
+                                 locale = readr::locale(decimal_mark = ",", grouping_mark = " ",
+                                                        encoding = encoding),
+                                 col_types = readr::cols(.default = "c"))
 
   # Apply filter if provided (case-insensitive search in indicator names)
   if (!is.null(filter) && nrow(indicators) > 0) {
@@ -319,11 +322,11 @@ arad_list_indicators <- function(set_id = NULL,
 #' selection_dims <- arad_indicators_dims(selection_id = "my_selection")
 #' }
 arad_indicators_dims <- function(set_id = NULL,
-                                indicator_id_list = NULL,
-                                selection_id = NULL,
-                                api_key = NULL,
-                                base_url = "https://www.cnb.cz/aradb/api/v1",
-                                encoding = "windows-1250") {
+                                 indicator_id_list = NULL,
+                                 selection_id = NULL,
+                                 api_key = NULL,
+                                 base_url = "https://www.cnb.cz/aradb/api/v1",
+                                 encoding = "windows-1250") {
 
   if (is.null(api_key)) {
     api_key <- Sys.getenv("ARAD_API_KEY")
@@ -368,9 +371,10 @@ arad_indicators_dims <- function(set_id = NULL,
 
   writeLines(rawToChar(raw_data), temp_file)
 
-  dimensions <- readr::read_csv2(temp_file,
-                                locale = readr::locale(encoding = encoding),
-                                col_types = readr::cols(.default = "c"))
+  dimensions <- readr::read_delim(temp_file, delim = ";",
+                                  locale = readr::locale(decimal_mark = ",", grouping_mark = " ",
+                                                         encoding = encoding),
+                                  col_types = readr::cols(.default = "c"))
 
   return(dimensions)
 }
@@ -406,11 +410,11 @@ arad_indicators_dims <- function(set_id = NULL,
 #' selection_tree <- arad_indicators_tree(selection_id = "my_selection")
 #' }
 arad_indicators_tree <- function(set_id = NULL,
-                                indicator_id_list = NULL,
-                                selection_id = NULL,
-                                api_key = NULL,
-                                base_url = "https://www.cnb.cz/aradb/api/v1",
-                                encoding = "windows-1250") {
+                                 indicator_id_list = NULL,
+                                 selection_id = NULL,
+                                 api_key = NULL,
+                                 base_url = "https://www.cnb.cz/aradb/api/v1",
+                                 encoding = "windows-1250") {
 
   if (is.null(api_key)) {
     api_key <- Sys.getenv("ARAD_API_KEY")
@@ -455,9 +459,10 @@ arad_indicators_tree <- function(set_id = NULL,
 
   writeLines(rawToChar(raw_data), temp_file)
 
-  tree <- readr::read_csv2(temp_file,
-                          locale = readr::locale(encoding = encoding),
-                          col_types = readr::cols(.default = "c"))
+  tree <- readr::read_delim(temp_file, delim = ";",
+                           locale = readr::locale(decimal_mark = ",", grouping_mark = " ",
+                                                  encoding = encoding),
+                           col_types = readr::cols(.default = "c"))
 
   return(tree)
 }

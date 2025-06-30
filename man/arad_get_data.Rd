@@ -82,7 +82,7 @@ data <- arad_get_data(selection_id = "my_selection",
 recent_data <- arad_get_data("SRUMD08402C", months_before = 12)
 
 # Save data to specific directory
-data <- arad_get_data("SRUMD08402C", dest_dir = "~/data")
+data <- arad_get_data("SRUMD08402C", dest_dir = "./data")
 
 # Force redownload of existing data
 fresh_data <- arad_get_data("SRUMD08402C", force_redownload = TRUE)

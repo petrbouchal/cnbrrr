@@ -45,59 +45,36 @@ library(cnbrrr)
 
 # Get indicators from a specific data set (replace with actual set_id)
 indicators <- arad_list_indicators(set_id = 1115, filter = "podnik")
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.
 head(indicators)
-#> # A tibble: 1 × 7
-#>   indicator_id indicator_name                           frequency_code frequency_name unit_mult_code unit_mult_name unit 
-#>   <chr>        <chr>                                    <chr>          <chr>          <chr>          <chr>          <chr>
-#> 1 SRDM02712C   Inkasa celostátních daňových příjmů (zd… M              Měsíční        6              milióny        CZK
+#> Error in eval(expr, envir, enclos): object 'indicators' not found
 ```
 
 
 ``` r
 # Filter indicators by name within a data set
 gdp_indicators <- arad_list_indicators(set_id = 1032, filter = "Místní vládní instituce")
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.
 gdp_indicators
-#> # A tibble: 78 × 7
-#>    indicator_id    indicator_name                       frequency_code frequency_name unit_mult_code unit_mult_name unit 
-#>    <chr>           <chr>                                <chr>          <chr>          <chr>          <chr>          <chr>
-#>  1 SFU0QS1313L01LE Finanční účty, Aktiva/Závazky celke… Q              Čtvrtletní     6              milióny        CZK  
-#>  2 SFU0QS1313L01T  Finanční účty, Aktiva/Závazky celke… Q              Čtvrtletní     6              milióny        CZK  
-#>  3 SFU0QS1313A01LE Finanční účty, Aktiva/Závazky celke… Q              Čtvrtletní     6              milióny        CZK  
-#>  4 SFU0QS1313A01T  Finanční účty, Aktiva/Závazky celke… Q              Čtvrtletní     6              milióny        CZK  
-#>  5 SFU2QS1313L05T  Finanční účty, F2 Oběživo a vklady:… Q              Čtvrtletní     6              milióny        CZK  
-#>  6 SFU2QS1313A05LE Finanční účty, F2 Oběživo a vklady:… Q              Čtvrtletní     6              milióny        CZK  
-#>  7 SFU2QS1313A05T  Finanční účty, F2 Oběživo a vklady:… Q              Čtvrtletní     6              milióny        CZK  
-#>  8 SFU2QS1313A06LE Finanční účty, F2 Oběživo a vklady:… Q              Čtvrtletní     6              milióny        CZK  
-#>  9 SFU2QS1313A06T  Finanční účty, F2 Oběživo a vklady:… Q              Čtvrtletní     6              milióny        CZK  
-#> 10 SFU2QS1313L07T  Finanční účty, F2 Oběživo a vklady:… Q              Čtvrtletní     6              milióny        CZK  
-#> # ℹ 68 more rows
+#> Error in eval(expr, envir, enclos): object 'gdp_indicators' not found
 ```
 
 
 ``` r
 # Get specific indicators by indicator IDs
 specific_indicators <- arad_list_indicators(indicator_id_list = "SFU2QS1313L05T")
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.
 specific_indicators
-#> # A tibble: 1 × 7
-#>   indicator_id   indicator_name                         frequency_code frequency_name unit_mult_code unit_mult_name unit 
-#>   <chr>          <chr>                                  <chr>          <chr>          <chr>          <chr>          <chr>
-#> 1 SFU2QS1313L05T Finanční účty, F2 Oběživo a vklady:Čt… Q              Čtvrtletní     6              milióny        CZK
+#> Error in eval(expr, envir, enclos): object 'specific_indicators' not found
 ```
 
 
 ``` r
 # Get multiple indicators by their IDs
 multiple_indicators <- arad_list_indicators(indicator_id_list = c("SFU2QS1313L05T", "SFU2QS1313A06LE"))
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.
 multiple_indicators
-#> # A tibble: 2 × 7
-#>   indicator_id    indicator_name                        frequency_code frequency_name unit_mult_code unit_mult_name unit 
-#>   <chr>           <chr>                                 <chr>          <chr>          <chr>          <chr>          <chr>
-#> 1 SFU2QS1313L05T  Finanční účty, F2 Oběživo a vklady:Č… Q              Čtvrtletní     6              milióny        CZK  
-#> 2 SFU2QS1313A06LE Finanční účty, F2 Oběživo a vklady:Č… Q              Čtvrtletní     6              milióny        CZK
+#> Error in eval(expr, envir, enclos): object 'multiple_indicators' not found
 ```
 
 
@@ -113,55 +90,27 @@ Explore the structure and organization of indicators:
 ``` r
 # Get indicator dimensions (shows how indicators are organized)
 indicators_in_base <- arad_list_indicators(base_id = "MBOP")
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.
 head(indicators_in_base)
-#> # A tibble: 6 × 7
-#>   indicator_id  indicator_name                          frequency_code frequency_name unit_mult_code unit_mult_name unit 
-#>   <chr>         <chr>                                   <chr>          <chr>          <chr>          <chr>          <chr>
-#> 1 MBOPCAHDPPECY Platební bilance:Běžný účet platební b… Y              Roční          0              jednotky       proc…
-#> 2 MBOPCCHDPPECY Platební bilance:Běžný a kapitálový úč… Y              Roční          0              jednotky       proc…
-#> 3 MBOPDICZXVOLY Platební bilance:Přímé investice v ČR,… Y              Roční          9              miliardy       CZK  
-#> 4 MBOPLPIXXVOLY Platební bilance:Pasiva: účasti a podí… Y              Roční          9              miliardy       CZK  
-#> 5 MBOPADSXXVOLY Platební bilance:Aktiva: dluhové cenné… Y              Roční          9              miliardy       CZK  
-#> 6 MBOPAPIXXVOLY Platební bilance:Aktiva: účasti a podí… Y              Roční          9              miliardy       CZK
+#> Error in eval(expr, envir, enclos): object 'indicators_in_base' not found
 ```
 
 
 ``` r
 # Get dimensional structure for a specific set
 dims <- arad_indicators_dims(set_id = 1115)
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> Error in value[[3L]](cond): Failed to retrieve indicator dimensions from ARAD API: HTTP 400 Bad Request.
 head(dims)
-#> # A tibble: 6 × 8
-#>   indicator_id base_code base_name                               dim_code dim_name dim_value_code dim_value_name dim_rank
-#>   <chr>        <chr>     <chr>                                   <chr>    <chr>    <chr>          <chr>          <chr>   
-#> 1 SRDM01202C   SRD       Inkasa celostátních daňových příjmů (z… FREKVEN… Frekven… M              Měsíční        1       
-#> 2 SRDM01202C   SRD       Inkasa celostátních daňových příjmů (z… STO      Položka… 012            Daň z přidané… 2       
-#> 3 SRDM01202C   SRD       Inkasa celostátních daňových příjmů (z… COUNTER… Sektor … 02             Ekonomika cel… 3       
-#> 4 SRDM01202C   SRD       Inkasa celostátních daňových příjmů (z… CUMMUL   Kumulace C              Hodnoty kumul… 4000    
-#> 5 SRDM01302C   SRD       Inkasa celostátních daňových příjmů (z… FREKVEN… Frekven… M              Měsíční        1       
-#> 6 SRDM01302C   SRD       Inkasa celostátních daňových příjmů (z… STO      Položka… 013            Clo            2
+#> Error in eval(expr, envir, enclos): object 'dims' not found
 ```
 
 
 ``` r
 # Get dimensions for specific indicators
 specific_dims <- arad_indicators_dims(indicator_id_list = c("SFU2QS1313L05T", "SFU2QS1313A06LE"))
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> Error in value[[3L]](cond): Failed to retrieve indicator dimensions from ARAD API: HTTP 400 Bad Request.
 specific_dims
-#> # A tibble: 10 × 8
-#>    indicator_id    base_code base_name                          dim_code  dim_name dim_value_code dim_value_name dim_rank
-#>    <chr>           <chr>     <chr>                              <chr>     <chr>    <chr>          <chr>          <chr>   
-#>  1 SFU2QS1313A06LE SFU2      Finanční účty, F2 Oběživo a vklady FREKVENCE Frekven… Q              Čtvrtletní     1       
-#>  2 SFU2QS1313A06LE SFU2      Finanční účty, F2 Oběživo a vklady SEKTOR_FU Sektory… S1313          Místní vládní… 2       
-#>  3 SFU2QS1313A06LE SFU2      Finanční účty, F2 Oběživo a vklady BALANCE   Balance  A              Aktiva         3       
-#>  4 SFU2QS1313A06LE SFU2      Finanční účty, F2 Oběživo a vklady FIN_UCT   Finančn… 06             Oběživo        4       
-#>  5 SFU2QS1313A06LE SFU2      Finanční účty, F2 Oběživo a vklady ST        Stavy/t… LE             Stavy          5       
-#>  6 SFU2QS1313L05T  SFU2      Finanční účty, F2 Oběživo a vklady FREKVENCE Frekven… Q              Čtvrtletní     1       
-#>  7 SFU2QS1313L05T  SFU2      Finanční účty, F2 Oběživo a vklady SEKTOR_FU Sektory… S1313          Místní vládní… 2       
-#>  8 SFU2QS1313L05T  SFU2      Finanční účty, F2 Oběživo a vklady BALANCE   Balance  L              Pasiva         3       
-#>  9 SFU2QS1313L05T  SFU2      Finanční účty, F2 Oběživo a vklady FIN_UCT   Finančn… 05             Oběživo a vkl… 4       
-#> 10 SFU2QS1313L05T  SFU2      Finanční účty, F2 Oběživo a vklady ST        Stavy/t… T              Transakce      5
+#> Error in eval(expr, envir, enclos): object 'specific_dims' not found
 ```
 
 
@@ -175,30 +124,18 @@ selection_dims
 ``` r
 # Get the hierarchical tree structure of indicators
 tree <- arad_indicators_tree(set_id = 1115)
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> Error in value[[3L]](cond): Failed to retrieve indicator tree from ARAD API: HTTP 400 Bad Request.
 head(tree)
-#> # A tibble: 6 × 2
-#>   indicator_id path                                   
-#>   <chr>        <chr>                                  
-#> 1 SRDM01202C   Statistická data/Státní rozpočet a daně
-#> 2 SRDM01302C   Statistická data/Státní rozpočet a daně
-#> 3 SRDM01402C   Statistická data/Státní rozpočet a daně
-#> 4 SRDM01502C   Statistická data/Státní rozpočet a daně
-#> 5 SRDM01602C   Statistická data/Státní rozpočet a daně
-#> 6 SRDM02613C   Statistická data/Státní rozpočet a daně
+#> Error in eval(expr, envir, enclos): object 'tree' not found
 ```
 
 
 ``` r
 # Get tree structure for specific indicators
 specific_tree <- arad_indicators_tree(indicator_id_list = c("SFU2QS1313L05T", "SFU2QS1313A06LE"))
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> Error in value[[3L]](cond): Failed to retrieve indicator tree from ARAD API: HTTP 400 Bad Request.
 specific_tree
-#> # A tibble: 2 × 2
-#>   indicator_id    path                                                     
-#>   <chr>           <chr>                                                    
-#> 1 SFU2QS1313A06LE Statistická data/Statistika finančních účtů/Finanční účty
-#> 2 SFU2QS1313L05T  Statistická data/Statistika finančních účtů/Finanční účty
+#> Error in eval(expr, envir, enclos): object 'specific_tree' not found
 ```
 
 
@@ -222,27 +159,163 @@ Get time series data for the indicators you need:
 ``` r
 # Get data for a single indicator
 data <- arad_get_data(c("MBOPCAHDPPECY", "MBOPCCHDPPECY"))
-#> $api_key
-#> [1] "20252406003048901461901461UWHUTG2Q7CX2Y7PX"
-#> 
-#> $indicator_id_list
-#> [1] "MBOPCAHDPPECY,MBOPCCHDPPECY"
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.
 data
-#> # A tibble: 64 × 6
-#>    indicator_id  snapshot_id period              value  year month
-#>    <chr>         <chr>       <dttm>              <dbl> <dbl> <dbl>
-#>  1 MBOPCAHDPPECY 71          2026-12-31 00:00:00   1.1  2026    12
-#>  2 MBOPCAHDPPECY 71          2025-12-31 00:00:00   1.1  2025    12
-#>  3 MBOPCAHDPPECY 71          2024-12-31 00:00:00   1.8  2024    12
-#>  4 MBOPCAHDPPECY 71          2023-12-31 00:00:00  -0.1  2023    12
-#>  5 MBOPCAHDPPECY 71          2022-12-31 00:00:00  -4.7  2022    12
-#>  6 MBOPCAHDPPECY 71          2021-12-31 00:00:00  -2.1  2021    12
-#>  7 MBOPCAHDPPECY 71          2020-12-31 00:00:00   1.8  2020    12
-#>  8 MBOPCAHDPPECY 71          2019-12-31 00:00:00   0.3  2019    12
-#>  9 MBOPCAHDPPECY 71          2018-12-31 00:00:00   0.4  2018    12
-#> 10 MBOPCAHDPPECY 71          2017-12-31 00:00:00   1.5  2017    12
-#> # ℹ 54 more rows
+#> function (..., list = character(), package = NULL, lib.loc = NULL, 
+#>     verbose = getOption("verbose"), envir = .GlobalEnv, overwrite = TRUE) 
+#> {
+#>     fileExt <- function(x) {
+#>         db <- grepl("\\.[^.]+\\.(gz|bz2|xz)$", x)
+#>         ans <- sub(".*\\.", "", x)
+#>         ans[db] <- sub(".*\\.([^.]+\\.)(gz|bz2|xz)$", "\\1\\2", 
+#>             x[db])
+#>         ans
+#>     }
+#>     my_read_table <- function(...) {
+#>         lcc <- Sys.getlocale("LC_COLLATE")
+#>         on.exit(Sys.setlocale("LC_COLLATE", lcc))
+#>         Sys.setlocale("LC_COLLATE", "C")
+#>         read.table(...)
+#>     }
+#>     stopifnot(is.character(list))
+#>     names <- c(as.character(substitute(list(...))[-1L]), list)
+#>     if (!is.null(package)) {
+#>         if (!is.character(package)) 
+#>             stop("'package' must be a character vector or NULL")
+#>     }
+#>     paths <- find.package(package, lib.loc, verbose = verbose)
+#>     if (is.null(lib.loc)) 
+#>         paths <- c(path.package(package, TRUE), if (!length(package)) getwd(), 
+#>             paths)
+#>     paths <- unique(normalizePath(paths[file.exists(paths)]))
+#>     paths <- paths[dir.exists(file.path(paths, "data"))]
+#>     dataExts <- tools:::.make_file_exts("data")
+#>     if (length(names) == 0L) {
+#>         db <- matrix(character(), nrow = 0L, ncol = 4L)
+#>         for (path in paths) {
+#>             entries <- NULL
+#>             packageName <- if (file_test("-f", file.path(path, 
+#>                 "DESCRIPTION"))) 
+#>                 basename(path)
+#>             else "."
+#>             if (file_test("-f", INDEX <- file.path(path, "Meta", 
+#>                 "data.rds"))) {
+#>                 entries <- readRDS(INDEX)
+#>             }
+#>             else {
+#>                 dataDir <- file.path(path, "data")
+#>                 entries <- tools::list_files_with_type(dataDir, 
+#>                   "data")
+#>                 if (length(entries)) {
+#>                   entries <- unique(tools::file_path_sans_ext(basename(entries)))
+#>                   entries <- cbind(entries, "")
+#>                 }
+#>             }
+#>             if (NROW(entries)) {
+#>                 if (is.matrix(entries) && ncol(entries) == 2L) 
+#>                   db <- rbind(db, cbind(packageName, dirname(path), 
+#>                     entries))
+#>                 else warning(gettextf("data index for package %s is invalid and will be ignored", 
+#>                   sQuote(packageName)), domain = NA, call. = FALSE)
+#>             }
+#>         }
+#>         colnames(db) <- c("Package", "LibPath", "Item", "Title")
+#>         footer <- if (missing(package)) 
+#>             paste0("Use ", sQuote(paste("data(package =", ".packages(all.available = TRUE))")), 
+#>                 "\n", "to list the data sets in all *available* packages.")
+#>         else NULL
+#>         y <- list(title = "Data sets", header = NULL, results = db, 
+#>             footer = footer)
+#>         class(y) <- "packageIQR"
+#>         return(y)
+#>     }
+#>     paths <- file.path(paths, "data")
+#>     for (name in names) {
+#>         found <- FALSE
+#>         for (p in paths) {
+#>             tmp_env <- if (overwrite) 
+#>                 envir
+#>             else new.env()
+#>             if (file_test("-f", file.path(p, "Rdata.rds"))) {
+#>                 rds <- readRDS(file.path(p, "Rdata.rds"))
+#>                 if (name %in% names(rds)) {
+#>                   found <- TRUE
+#>                   if (verbose) 
+#>                     message(sprintf("name=%s:\t found in Rdata.rds", 
+#>                       name), domain = NA)
+#>                   thispkg <- sub(".*/([^/]*)/data$", "\\1", p)
+#>                   thispkg <- sub("_.*$", "", thispkg)
+#>                   thispkg <- paste0("package:", thispkg)
+#>                   objs <- rds[[name]]
+#>                   lazyLoad(file.path(p, "Rdata"), envir = tmp_env, 
+#>                     filter = function(x) x %in% objs)
+#>                   break
+#>                 }
+#>                 else if (verbose) 
+#>                   message(sprintf("name=%s:\t NOT found in names() of Rdata.rds, i.e.,\n\t%s\n", 
+#>                     name, paste(names(rds), collapse = ",")), 
+#>                     domain = NA)
+#>             }
+#>             files <- list.files(p, full.names = TRUE)
+#>             files <- files[grep(name, files, fixed = TRUE)]
+#>             if (length(files) > 1L) {
+#>                 o <- match(fileExt(files), dataExts, nomatch = 100L)
+#>                 paths0 <- dirname(files)
+#>                 paths0 <- factor(paths0, levels = unique(paths0))
+#>                 files <- files[order(paths0, o)]
+#>             }
+#>             if (length(files)) {
+#>                 for (file in files) {
+#>                   if (verbose) 
+#>                     message("name=", name, ":\t file= ...", .Platform$file.sep, 
+#>                       basename(file), "::\t", appendLF = FALSE, 
+#>                       domain = NA)
+#>                   ext <- fileExt(file)
+#>                   if (basename(file) != paste0(name, ".", ext)) 
+#>                     found <- FALSE
+#>                   else {
+#>                     found <- TRUE
+#>                     switch(ext, R = , r = {
+#>                       library("utils")
+#>                       sys.source(file, chdir = TRUE, envir = tmp_env)
+#>                     }, RData = , rdata = , rda = load(file, envir = tmp_env), 
+#>                       TXT = , txt = , tab = , tab.gz = , tab.bz2 = , 
+#>                       tab.xz = , txt.gz = , txt.bz2 = , txt.xz = assign(name, 
+#>                         my_read_table(file, header = TRUE, as.is = FALSE), 
+#>                         envir = tmp_env), CSV = , csv = , csv.gz = , 
+#>                       csv.bz2 = , csv.xz = assign(name, my_read_table(file, 
+#>                         header = TRUE, sep = ";", as.is = FALSE), 
+#>                         envir = tmp_env), found <- FALSE)
+#>                   }
+#>                   if (found) 
+#>                     break
+#>                 }
+#>                 if (verbose) 
+#>                   message(if (!found) 
+#>                     "*NOT* ", "found", domain = NA)
+#>             }
+#>             if (found) 
+#>                 break
+#>         }
+#>         if (!found) {
+#>             warning(gettextf("data set %s not found", sQuote(name)), 
+#>                 domain = NA)
+#>         }
+#>         else if (!overwrite) {
+#>             for (o in ls(envir = tmp_env, all.names = TRUE)) {
+#>                 if (exists(o, envir = envir, inherits = FALSE)) 
+#>                   warning(gettextf("an object named %s already exists and will not be overwritten", 
+#>                     sQuote(o)))
+#>                 else assign(o, get(o, envir = tmp_env, inherits = FALSE), 
+#>                   envir = envir)
+#>             }
+#>             rm(tmp_env)
+#>         }
+#>     }
+#>     invisible(names)
+#> }
+#> <bytecode: 0x10f68ee78>
+#> <environment: namespace:utils>
 ```
 
 
@@ -251,41 +324,16 @@ data
 multi_data <- arad_get_data(indicator_ids = c("MBOPCAHDPPECY", "MBOPCCHDPPECY"),
                             period_to = "20231231",
                             period_from = "20201031")
-#> $api_key
-#> [1] "20252406003048901461901461UWHUTG2Q7CX2Y7PX"
-#> 
-#> $indicator_id_list
-#> [1] "MBOPCAHDPPECY,MBOPCCHDPPECY"
-#> 
-#> $period_from
-#> [1] "20201031"
-#> 
-#> $period_to
-#> [1] "20231231"
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.
 multi_data
-#> # A tibble: 8 × 6
-#>   indicator_id  snapshot_id period              value  year month
-#>   <chr>         <chr>       <dttm>              <dbl> <dbl> <dbl>
-#> 1 MBOPCAHDPPECY 71          2023-12-31 00:00:00  -0.1  2023    12
-#> 2 MBOPCAHDPPECY 71          2022-12-31 00:00:00  -4.7  2022    12
-#> 3 MBOPCAHDPPECY 71          2021-12-31 00:00:00  -2.1  2021    12
-#> 4 MBOPCAHDPPECY 71          2020-12-31 00:00:00   1.8  2020    12
-#> 5 MBOPCCHDPPECY 71          2023-12-31 00:00:00   1    2023    12
-#> 6 MBOPCCHDPPECY 71          2022-12-31 00:00:00  -4.1  2022    12
-#> 7 MBOPCCHDPPECY 71          2021-12-31 00:00:00  -0.4  2021    12
-#> 8 MBOPCCHDPPECY 71          2020-12-31 00:00:00   2.9  2020    12
+#> Error in eval(expr, envir, enclos): object 'multi_data' not found
 ```
 
 
 ``` r
 # Get raw data without processing (returns raw CSV data)
 raw_data <- arad_get_data("SRUMD08402C", process_data = FALSE)
-#> $api_key
-#> [1] "20252406003048901461901461UWHUTG2Q7CX2Y7PX"
-#> 
-#> $indicator_id_list
-#> [1] "SRUMD08402C"
+#> Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.
 ```
 
 
@@ -295,33 +343,9 @@ spending <- arad_get_data("SRUMD08402C",
                            period_from = "20121231",
                            period_to = "20241231",
                            rename_value = "government_spending")
-#> $api_key
-#> [1] "20252406003048901461901461UWHUTG2Q7CX2Y7PX"
-#> 
-#> $indicator_id_list
-#> [1] "SRUMD08402C"
-#> 
-#> $period_from
-#> [1] "20121231"
-#> 
-#> $period_to
-#> [1] "20241231"
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.
 spending
-#> # A tibble: 145 × 6
-#>    indicator_id snapshot_id period              government_spending  year month
-#>    <chr>        <chr>       <dttm>                            <dbl> <dbl> <dbl>
-#>  1 SRUMD08402C  <NA>        2024-12-31 00:00:00             2.24e12  2024    12
-#>  2 SRUMD08402C  <NA>        2024-11-30 00:00:00             2.00e12  2024    11
-#>  3 SRUMD08402C  <NA>        2024-10-31 00:00:00             1.80e12  2024    10
-#>  4 SRUMD08402C  <NA>        2024-09-30 00:00:00             1.63e12  2024     9
-#>  5 SRUMD08402C  <NA>        2024-08-31 00:00:00             1.45e12  2024     8
-#>  6 SRUMD08402C  <NA>        2024-07-31 00:00:00             1.30e12  2024     7
-#>  7 SRUMD08402C  <NA>        2024-06-30 00:00:00             1.13e12  2024     6
-#>  8 SRUMD08402C  <NA>        2024-05-31 00:00:00             9.32e11  2024     5
-#>  9 SRUMD08402C  <NA>        2024-04-30 00:00:00             7.45e11  2024     4
-#> 10 SRUMD08402C  <NA>        2024-03-31 00:00:00             5.54e11  2024     3
-#> # ℹ 135 more rows
+#> Error in eval(expr, envir, enclos): object 'spending' not found
 ```
 
 ## Working with indicator structure
@@ -356,29 +380,13 @@ Here's a full workflow for analyzing Czech economic data:
 ``` r
 library(cnbrrr)
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 library(ggplot2)
 
 # 1. Find relevant indicators
 indicators <- arad_list_indicators(base_id = "SHDPZDR", filter = "HDP")
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.
 print(head(indicators))
-#> # A tibble: 6 × 7
-#>   indicator_id      indicator_name                      frequency_code frequency_name unit_mult_code unit_mult_name unit 
-#>   <chr>             <chr>                               <chr>          <chr>          <chr>          <chr>          <chr>
-#> 1 SHDPZDRY1D21MLNA  Zdroje HDP:Roční, Běžné ceny, D21 … Y              Roční          6              milióny        CZK  
-#> 2 SHDPZDRY1B1GMMLNA Zdroje HDP:Roční, Běžné ceny, B1GM… Y              Roční          6              milióny        CZK  
-#> 3 SHDPZDRY1B1GMLSA  Zdroje HDP:Roční, Běžné ceny, B1G … Y              Roční          6              milióny        CZK  
-#> 4 SHDPZDRY1D21MLSA  Zdroje HDP:Roční, Běžné ceny, D21 … Y              Roční          6              milióny        CZK  
-#> 5 SHDPZDRY1D31MLSA  Zdroje HDP:Roční, Běžné ceny, D31 … Y              Roční          6              milióny        CZK  
-#> 6 SHDPZDRY1B1GIPNA  Zdroje HDP:Roční, Běžné ceny, B1G … Y              Roční          0              jednotky       proc…
+#> Error in eval(expr, envir, enclos): object 'indicators' not found
 ```
 
 
@@ -387,12 +395,7 @@ print(head(indicators))
 gdp_data <- arad_get_data("SRUMD08402C",
                            rename_value = "gdp") |>
   filter(lubridate::month(period) == 12)
-#> $api_key
-#> [1] "20252406003048901461901461UWHUTG2Q7CX2Y7PX"
-#> 
-#> $indicator_id_list
-#> [1] "SRUMD08402C"
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.
 
 # 3. Process and analyze
 recent_gdp <- gdp_data  |>
@@ -402,6 +405,7 @@ recent_gdp <- gdp_data  |>
     gdp_growth = (gdp / lag(gdp) - 1) * 100,
     is_recession = gdp_growth < 0
   )
+#> Error in eval(expr, envir, enclos): object 'gdp_data' not found
 
 # 4. Summary statistics
 gdp_summary <- recent_gdp |>
@@ -412,12 +416,10 @@ gdp_summary <- recent_gdp |>
     latest_gdp = gdp[year == latest_year][1],
     recession_years = sum(is_recession, na.rm = TRUE)
   )
+#> Error in eval(expr, envir, enclos): object 'recent_gdp' not found
 
 print(gdp_summary)
-#> # A tibble: 1 × 5
-#>   mean_gdp mean_growth latest_year latest_gdp recession_years
-#>      <dbl>       <dbl>       <dbl>      <dbl>           <int>
-#> 1  1.52e12        4.99        2024    2.24e12               3
+#> Error in eval(expr, envir, enclos): object 'gdp_summary' not found
 ```
 
 
@@ -441,18 +443,11 @@ gdp_plot <- ggplot(recent_gdp, aes(x = year, y = gdp)) +
     plot.subtitle = element_text(size = 12, color = "gray60"),
     text = element_text(color = "#001F3F")
   )
-#> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-#> ℹ Please use `linewidth` instead.
-#> This warning is displayed once every 8 hours.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
+#> Error in eval(expr, envir, enclos): object 'recent_gdp' not found
 
 print(gdp_plot)
+#> Error in eval(expr, envir, enclos): object 'gdp_plot' not found
 ```
-
-<div class="figure">
-<img src="man/figures/README-unnamed-chunk-24-1.png" alt="plot of chunk unnamed-chunk-24" width="100%" />
-<p class="caption">plot of chunk unnamed-chunk-24</p>
-</div>
 
 
 ``` r
@@ -476,15 +471,11 @@ growth_plot <- ggplot(recent_gdp, aes(x = year, y = gdp_growth)) +
     text = element_text(color = "#001F3F"),
     legend.position = "bottom"
   )
+#> Error in eval(expr, envir, enclos): object 'recent_gdp' not found
 
 print(growth_plot)
-#> Warning: Removed 1 row containing missing values or values outside the scale range (`geom_col()`).
+#> Error in eval(expr, envir, enclos): object 'growth_plot' not found
 ```
-
-<div class="figure">
-<img src="man/figures/README-unnamed-chunk-25-1.png" alt="plot of chunk unnamed-chunk-25" width="100%" />
-<p class="caption">plot of chunk unnamed-chunk-25</p>
-</div>
 
 ## Data format and structure
 
@@ -502,20 +493,9 @@ Additional columns may be present depending on the specific data series.
 ``` r
 # Example of typical data structure
 sample_data <- arad_get_data("SRUMD08402C")
-#> $api_key
-#> [1] "20252406003048901461901461UWHUTG2Q7CX2Y7PX"
-#> 
-#> $indicator_id_list
-#> [1] "SRUMD08402C"
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.
 str(sample_data)
-#> tibble [389 × 6] (S3: tbl_df/tbl/data.frame)
-#>  $ indicator_id: chr [1:389] "SRUMD08402C" "SRUMD08402C" "SRUMD08402C" "SRUMD08402C" ...
-#>  $ snapshot_id : chr [1:389] NA NA NA NA ...
-#>  $ period      : POSIXct[1:389], format: "2025-05-31" "2025-04-30" "2025-03-31" "2025-02-28" ...
-#>  $ value       : num [1:389] 9.45e+11 7.49e+11 5.68e+11 3.65e+11 1.73e+11 ...
-#>  $ year        : num [1:389] 2025 2025 2025 2025 2025 ...
-#>  $ month       : num [1:389] 5 4 3 2 1 12 11 10 9 8 ...
+#> Error in eval(expr, envir, enclos): object 'sample_data' not found
 ```
 
 ## API endpoints used

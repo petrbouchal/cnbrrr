@@ -66,11 +66,6 @@ library(cnbrrr)
 
 # List available indicators from set (sestava), filter by name
 indicators <- arad_list_indicators(set_id = 1032, filter = "domácnost")
-```
-
-    ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
-
-``` r
 indicators
 ```
 
@@ -97,17 +92,6 @@ that, check the website.
 ``` r
 # Get data for a specific indicator  
 data <- arad_get_data("SRUMD08402C")
-```
-
-    $api_key
-    [1] "20252406003048901461901461UWHUTG2Q7CX2Y7PX"
-
-    $indicator_id_list
-    [1] "SRUMD08402C"
-
-    ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
-
-``` r
 data
 ```
 

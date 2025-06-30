@@ -7,7 +7,8 @@
       "Bash(ls:*)",
       "Bash(find:*)",
       "Bash(Rscript:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(R:*)"
     ],
     "deny": []
   }
