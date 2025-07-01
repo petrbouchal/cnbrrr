@@ -19,6 +19,8 @@ typography:
       source: bunny
     - family: IBM Plex Code
       source: bunny
+    - family: JetBrains Mono
+      source: bunny
   base: IBM Plex Sans
   monospace: JetBrains Mono
   headings:
