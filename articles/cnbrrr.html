@@ -104,27 +104,46 @@ provides several endpoints for discovering indicators:</p>
 <span></span>
 <span><span class="co"># Get indicators from a specific data set (replace with actual set_id)</span></span>
 <span><span class="va">indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>set_id <span class="op">=</span> <span class="fl">1115</span>, filter <span class="op">=</span> <span class="st">"podnik"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">indicators</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'indicators' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 1 × 7</span></span>
+<span><span class="co">#&gt;   indicator_id indicator_name           frequency_code frequency_name unit_mult_code unit_mult_name unit </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;                    &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 SRDM02712C   Inkasa celostátních daň… M              Měsíční        6              milióny        CZK</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Filter indicators by name within a data set</span></span>
 <span><span class="va">gdp_indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>set_id <span class="op">=</span> <span class="fl">1032</span>, filter <span class="op">=</span> <span class="st">"Místní vládní instituce"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.</span></span>
 <span><span class="va">gdp_indicators</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'gdp_indicators' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 78 × 7</span></span>
+<span><span class="co">#&gt;    indicator_id    indicator_name       frequency_code frequency_name unit_mult_code unit_mult_name unit </span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;           &lt;chr&gt;                &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;</span></span>
+<span><span class="co">#&gt;  1 SFU0QS1313L01LE Finanční účty, Akti… Q              Čtvrtletní     6              milióny        CZK  </span></span>
+<span><span class="co">#&gt;  2 SFU0QS1313L01T  Finanční účty, Akti… Q              Čtvrtletní     6              milióny        CZK  </span></span>
+<span><span class="co">#&gt;  3 SFU0QS1313A01LE Finanční účty, Akti… Q              Čtvrtletní     6              milióny        CZK  </span></span>
+<span><span class="co">#&gt;  4 SFU0QS1313A01T  Finanční účty, Akti… Q              Čtvrtletní     6              milióny        CZK  </span></span>
+<span><span class="co">#&gt;  5 SFU2QS1313L05T  Finanční účty, F2 O… Q              Čtvrtletní     6              milióny        CZK  </span></span>
+<span><span class="co">#&gt;  6 SFU2QS1313A05LE Finanční účty, F2 O… Q              Čtvrtletní     6              milióny        CZK  </span></span>
+<span><span class="co">#&gt;  7 SFU2QS1313A05T  Finanční účty, F2 O… Q              Čtvrtletní     6              milióny        CZK  </span></span>
+<span><span class="co">#&gt;  8 SFU2QS1313A06LE Finanční účty, F2 O… Q              Čtvrtletní     6              milióny        CZK  </span></span>
+<span><span class="co">#&gt;  9 SFU2QS1313A06T  Finanční účty, F2 O… Q              Čtvrtletní     6              milióny        CZK  </span></span>
+<span><span class="co">#&gt; 10 SFU2QS1313L07T  Finanční účty, F2 O… Q              Čtvrtletní     6              milióny        CZK  </span></span>
+<span><span class="co">#&gt; # ℹ 68 more rows</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get specific indicators by indicator IDs</span></span>
 <span><span class="va">specific_indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>indicator_id_list <span class="op">=</span> <span class="st">"SFU2QS1313L05T"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.</span></span>
 <span><span class="va">specific_indicators</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'specific_indicators' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 1 × 7</span></span>
+<span><span class="co">#&gt;   indicator_id   indicator_name         frequency_code frequency_name unit_mult_code unit_mult_name unit </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;                  &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 SFU2QS1313L05T Finanční účty, F2 Obě… Q              Čtvrtletní     6              milióny        CZK</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get multiple indicators by their IDs</span></span>
 <span><span class="va">multiple_indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>indicator_id_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SFU2QS1313L05T"</span>, <span class="st">"SFU2QS1313A06LE"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.</span></span>
 <span><span class="va">multiple_indicators</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'multiple_indicators' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 2 × 7</span></span>
+<span><span class="co">#&gt;   indicator_id    indicator_name        frequency_code frequency_name unit_mult_code unit_mult_name unit </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;                 &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 SFU2QS1313L05T  Finanční účty, F2 Ob… Q              Čtvrtletní     6              milióny        CZK  </span></span>
+<span><span class="co">#&gt; 2 SFU2QS1313A06LE Finanční účty, F2 Ob… Q              Čtvrtletní     6              milióny        CZK</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get indicators from a named selection in your ARAD account</span></span>
 <span><span class="va">selection_indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>selection_id <span class="op">=</span> <span class="st">"my_selection"</span><span class="op">)</span></span>
@@ -133,21 +152,46 @@ provides several endpoints for discovering indicators:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get indicator dimensions (shows how indicators are organized)</span></span>
 <span><span class="va">indicators_in_base</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>base_id <span class="op">=</span> <span class="st">"MBOP"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">indicators_in_base</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'indicators_in_base' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 6 × 7</span></span>
+<span><span class="co">#&gt;   indicator_id  indicator_name          frequency_code frequency_name unit_mult_code unit_mult_name unit </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;         &lt;chr&gt;                   &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 MBOPCAHDPPECY Platební bilance:Běžný… Y              Roční          0              jednotky       proc…</span></span>
+<span><span class="co">#&gt; 2 MBOPCCHDPPECY Platební bilance:Běžný… Y              Roční          0              jednotky       proc…</span></span>
+<span><span class="co">#&gt; 3 MBOPDICZXVOLY Platební bilance:Přímé… Y              Roční          9              miliardy       CZK  </span></span>
+<span><span class="co">#&gt; 4 MBOPLPIXXVOLY Platební bilance:Pasiv… Y              Roční          9              miliardy       CZK  </span></span>
+<span><span class="co">#&gt; 5 MBOPADSXXVOLY Platební bilance:Aktiv… Y              Roční          9              miliardy       CZK  </span></span>
+<span><span class="co">#&gt; 6 MBOPAPIXXVOLY Platební bilance:Aktiv… Y              Roční          9              miliardy       CZK</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get dimensional structure for a specific set</span></span>
 <span><span class="va">dims</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_indicators_dims.html">arad_indicators_dims</a></span><span class="op">(</span>set_id <span class="op">=</span> <span class="fl">1115</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicator dimensions from ARAD API: HTTP 400 Bad Request.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">dims</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'dims' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 6 × 8</span></span>
+<span><span class="co">#&gt;   indicator_id base_code base_name               dim_code dim_name dim_value_code dim_value_name dim_rank</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;                   &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;   </span></span>
+<span><span class="co">#&gt; 1 SRDM01202C   SRD       Inkasa celostátních da… FREKVEN… Frekven… M              Měsíční        1       </span></span>
+<span><span class="co">#&gt; 2 SRDM01202C   SRD       Inkasa celostátních da… STO      Položka… 012            Daň z přidané… 2       </span></span>
+<span><span class="co">#&gt; 3 SRDM01202C   SRD       Inkasa celostátních da… COUNTER… Sektor … 02             Ekonomika cel… 3       </span></span>
+<span><span class="co">#&gt; 4 SRDM01202C   SRD       Inkasa celostátních da… CUMMUL   Kumulace C              Hodnoty kumul… 4000    </span></span>
+<span><span class="co">#&gt; 5 SRDM01302C   SRD       Inkasa celostátních da… FREKVEN… Frekven… M              Měsíční        1       </span></span>
+<span><span class="co">#&gt; 6 SRDM01302C   SRD       Inkasa celostátních da… STO      Položka… 013            Clo            2</span></span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get dimensions for specific indicators</span></span>
 <span><span class="va">specific_dims</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_indicators_dims.html">arad_indicators_dims</a></span><span class="op">(</span>indicator_id_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SFU2QS1313L05T"</span>, <span class="st">"SFU2QS1313A06LE"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicator dimensions from ARAD API: HTTP 400 Bad Request.</span></span>
 <span><span class="va">specific_dims</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'specific_dims' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 10 × 8</span></span>
+<span><span class="co">#&gt;    indicator_id    base_code base_name           dim_code dim_name dim_value_code dim_value_name dim_rank</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;               &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;   </span></span>
+<span><span class="co">#&gt;  1 SFU2QS1313A06LE SFU2      Finanční účty, F2 … FREKVEN… Frekven… Q              "Čtvrtletní"   1       </span></span>
+<span><span class="co">#&gt;  2 SFU2QS1313A06LE SFU2      Finanční účty, F2 … SEKTOR_… Sektory… S1313          "Místní vládn… 2       </span></span>
+<span><span class="co">#&gt;  3 SFU2QS1313A06LE SFU2      Finanční účty, F2 … BALANCE  Balance  A              "Aktiva"       3       </span></span>
+<span><span class="co">#&gt;  4 SFU2QS1313A06LE SFU2      Finanční účty, F2 … FIN_UCT  Finančn… 06             "Oběživo "     4       </span></span>
+<span><span class="co">#&gt;  5 SFU2QS1313A06LE SFU2      Finanční účty, F2 … ST       Stavy/t… LE             "Stavy"        5       </span></span>
+<span><span class="co">#&gt;  6 SFU2QS1313L05T  SFU2      Finanční účty, F2 … FREKVEN… Frekven… Q              "Čtvrtletní"   1       </span></span>
+<span><span class="co">#&gt;  7 SFU2QS1313L05T  SFU2      Finanční účty, F2 … SEKTOR_… Sektory… S1313          "Místní vládn… 2       </span></span>
+<span><span class="co">#&gt;  8 SFU2QS1313L05T  SFU2      Finanční účty, F2 … BALANCE  Balance  L              "Pasiva"       3       </span></span>
+<span><span class="co">#&gt;  9 SFU2QS1313L05T  SFU2      Finanční účty, F2 … FIN_UCT  Finančn… 05             "Oběživo a vk… 4       </span></span>
+<span><span class="co">#&gt; 10 SFU2QS1313L05T  SFU2      Finanční účty, F2 … ST       Stavy/t… T              "Transakce"    5</span></span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get dimensions from a named selection</span></span>
 <span><span class="va">selection_dims</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_indicators_dims.html">arad_indicators_dims</a></span><span class="op">(</span>selection_id <span class="op">=</span> <span class="st">"my_selection"</span><span class="op">)</span></span>
@@ -155,15 +199,25 @@ provides several endpoints for discovering indicators:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get the hierarchical tree structure of indicators</span></span>
 <span><span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_indicators_tree.html">arad_indicators_tree</a></span><span class="op">(</span>set_id <span class="op">=</span> <span class="fl">1115</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicator tree from ARAD API: HTTP 400 Bad Request.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'tree' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 6 × 2</span></span>
+<span><span class="co">#&gt;   indicator_id path                                   </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;                                  </span></span>
+<span><span class="co">#&gt; 1 SRDM01202C   Statistická data/Státní rozpočet a daně</span></span>
+<span><span class="co">#&gt; 2 SRDM01302C   Statistická data/Státní rozpočet a daně</span></span>
+<span><span class="co">#&gt; 3 SRDM01402C   Statistická data/Státní rozpočet a daně</span></span>
+<span><span class="co">#&gt; 4 SRDM01502C   Statistická data/Státní rozpočet a daně</span></span>
+<span><span class="co">#&gt; 5 SRDM01602C   Statistická data/Státní rozpočet a daně</span></span>
+<span><span class="co">#&gt; 6 SRDM02613C   Statistická data/Státní rozpočet a daně</span></span></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get tree structure for specific indicators</span></span>
 <span><span class="va">specific_tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_indicators_tree.html">arad_indicators_tree</a></span><span class="op">(</span>indicator_id_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SFU2QS1313L05T"</span>, <span class="st">"SFU2QS1313A06LE"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicator tree from ARAD API: HTTP 400 Bad Request.</span></span>
 <span><span class="va">specific_tree</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'specific_tree' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 2 × 2</span></span>
+<span><span class="co">#&gt;   indicator_id    path                                                     </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;                                                    </span></span>
+<span><span class="co">#&gt; 1 SFU2QS1313A06LE Statistická data/Statistika finančních účtů/Finanční účty</span></span>
+<span><span class="co">#&gt; 2 SFU2QS1313L05T  Statistická data/Statistika finančních účtů/Finanční účty</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get tree structure from a named selection</span></span>
 <span><span class="va">selection_tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_indicators_tree.html">arad_indicators_tree</a></span><span class="op">(</span>selection_id <span class="op">=</span> <span class="st">"my_selection"</span><span class="op">)</span></span>
@@ -184,184 +238,64 @@ you’ve created in your ARAD user account to group indicators</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get data for a single indicator</span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MBOPCAHDPPECY"</span>, <span class="st">"MBOPCCHDPPECY"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.</span></span>
 <span><span class="va">data</span></span>
-<span><span class="co">#&gt; function (..., list = character(), package = NULL, lib.loc = NULL, </span></span>
-<span><span class="co">#&gt;     verbose = getOption("verbose"), envir = .GlobalEnv, overwrite = TRUE) </span></span>
-<span><span class="co">#&gt; {</span></span>
-<span><span class="co">#&gt;     fileExt &lt;- function(x) {</span></span>
-<span><span class="co">#&gt;         db &lt;- grepl("\\.[^.]+\\.(gz|bz2|xz)$", x)</span></span>
-<span><span class="co">#&gt;         ans &lt;- sub(".*\\.", "", x)</span></span>
-<span><span class="co">#&gt;         ans[db] &lt;- sub(".*\\.([^.]+\\.)(gz|bz2|xz)$", "\\1\\2", </span></span>
-<span><span class="co">#&gt;             x[db])</span></span>
-<span><span class="co">#&gt;         ans</span></span>
-<span><span class="co">#&gt;     }</span></span>
-<span><span class="co">#&gt;     my_read_table &lt;- function(...) {</span></span>
-<span><span class="co">#&gt;         lcc &lt;- Sys.getlocale("LC_COLLATE")</span></span>
-<span><span class="co">#&gt;         on.exit(Sys.setlocale("LC_COLLATE", lcc))</span></span>
-<span><span class="co">#&gt;         Sys.setlocale("LC_COLLATE", "C")</span></span>
-<span><span class="co">#&gt;         read.table(...)</span></span>
-<span><span class="co">#&gt;     }</span></span>
-<span><span class="co">#&gt;     stopifnot(is.character(list))</span></span>
-<span><span class="co">#&gt;     names &lt;- c(as.character(substitute(list(...))[-1L]), list)</span></span>
-<span><span class="co">#&gt;     if (!is.null(package)) {</span></span>
-<span><span class="co">#&gt;         if (!is.character(package)) </span></span>
-<span><span class="co">#&gt;             stop("'package' must be a character vector or NULL")</span></span>
-<span><span class="co">#&gt;     }</span></span>
-<span><span class="co">#&gt;     paths &lt;- find.package(package, lib.loc, verbose = verbose)</span></span>
-<span><span class="co">#&gt;     if (is.null(lib.loc)) </span></span>
-<span><span class="co">#&gt;         paths &lt;- c(path.package(package, TRUE), if (!length(package)) getwd(), </span></span>
-<span><span class="co">#&gt;             paths)</span></span>
-<span><span class="co">#&gt;     paths &lt;- unique(normalizePath(paths[file.exists(paths)]))</span></span>
-<span><span class="co">#&gt;     paths &lt;- paths[dir.exists(file.path(paths, "data"))]</span></span>
-<span><span class="co">#&gt;     dataExts &lt;- tools:::.make_file_exts("data")</span></span>
-<span><span class="co">#&gt;     if (length(names) == 0L) {</span></span>
-<span><span class="co">#&gt;         db &lt;- matrix(character(), nrow = 0L, ncol = 4L)</span></span>
-<span><span class="co">#&gt;         for (path in paths) {</span></span>
-<span><span class="co">#&gt;             entries &lt;- NULL</span></span>
-<span><span class="co">#&gt;             packageName &lt;- if (file_test("-f", file.path(path, </span></span>
-<span><span class="co">#&gt;                 "DESCRIPTION"))) </span></span>
-<span><span class="co">#&gt;                 basename(path)</span></span>
-<span><span class="co">#&gt;             else "."</span></span>
-<span><span class="co">#&gt;             if (file_test("-f", INDEX &lt;- file.path(path, "Meta", </span></span>
-<span><span class="co">#&gt;                 "data.rds"))) {</span></span>
-<span><span class="co">#&gt;                 entries &lt;- readRDS(INDEX)</span></span>
-<span><span class="co">#&gt;             }</span></span>
-<span><span class="co">#&gt;             else {</span></span>
-<span><span class="co">#&gt;                 dataDir &lt;- file.path(path, "data")</span></span>
-<span><span class="co">#&gt;                 entries &lt;- tools::list_files_with_type(dataDir, </span></span>
-<span><span class="co">#&gt;                   "data")</span></span>
-<span><span class="co">#&gt;                 if (length(entries)) {</span></span>
-<span><span class="co">#&gt;                   entries &lt;- unique(tools::file_path_sans_ext(basename(entries)))</span></span>
-<span><span class="co">#&gt;                   entries &lt;- cbind(entries, "")</span></span>
-<span><span class="co">#&gt;                 }</span></span>
-<span><span class="co">#&gt;             }</span></span>
-<span><span class="co">#&gt;             if (NROW(entries)) {</span></span>
-<span><span class="co">#&gt;                 if (is.matrix(entries) &amp;&amp; ncol(entries) == 2L) </span></span>
-<span><span class="co">#&gt;                   db &lt;- rbind(db, cbind(packageName, dirname(path), </span></span>
-<span><span class="co">#&gt;                     entries))</span></span>
-<span><span class="co">#&gt;                 else warning(gettextf("data index for package %s is invalid and will be ignored", </span></span>
-<span><span class="co">#&gt;                   sQuote(packageName)), domain = NA, call. = FALSE)</span></span>
-<span><span class="co">#&gt;             }</span></span>
-<span><span class="co">#&gt;         }</span></span>
-<span><span class="co">#&gt;         colnames(db) &lt;- c("Package", "LibPath", "Item", "Title")</span></span>
-<span><span class="co">#&gt;         footer &lt;- if (missing(package)) </span></span>
-<span><span class="co">#&gt;             paste0("Use ", sQuote(paste("data(package =", ".packages(all.available = TRUE))")), </span></span>
-<span><span class="co">#&gt;                 "\n", "to list the data sets in all *available* packages.")</span></span>
-<span><span class="co">#&gt;         else NULL</span></span>
-<span><span class="co">#&gt;         y &lt;- list(title = "Data sets", header = NULL, results = db, </span></span>
-<span><span class="co">#&gt;             footer = footer)</span></span>
-<span><span class="co">#&gt;         class(y) &lt;- "packageIQR"</span></span>
-<span><span class="co">#&gt;         return(y)</span></span>
-<span><span class="co">#&gt;     }</span></span>
-<span><span class="co">#&gt;     paths &lt;- file.path(paths, "data")</span></span>
-<span><span class="co">#&gt;     for (name in names) {</span></span>
-<span><span class="co">#&gt;         found &lt;- FALSE</span></span>
-<span><span class="co">#&gt;         for (p in paths) {</span></span>
-<span><span class="co">#&gt;             tmp_env &lt;- if (overwrite) </span></span>
-<span><span class="co">#&gt;                 envir</span></span>
-<span><span class="co">#&gt;             else new.env()</span></span>
-<span><span class="co">#&gt;             if (file_test("-f", file.path(p, "Rdata.rds"))) {</span></span>
-<span><span class="co">#&gt;                 rds &lt;- readRDS(file.path(p, "Rdata.rds"))</span></span>
-<span><span class="co">#&gt;                 if (name %in% names(rds)) {</span></span>
-<span><span class="co">#&gt;                   found &lt;- TRUE</span></span>
-<span><span class="co">#&gt;                   if (verbose) </span></span>
-<span><span class="co">#&gt;                     message(sprintf("name=%s:\t found in Rdata.rds", </span></span>
-<span><span class="co">#&gt;                       name), domain = NA)</span></span>
-<span><span class="co">#&gt;                   thispkg &lt;- sub(".*/([^/]*)/data$", "\\1", p)</span></span>
-<span><span class="co">#&gt;                   thispkg &lt;- sub("_.*$", "", thispkg)</span></span>
-<span><span class="co">#&gt;                   thispkg &lt;- paste0("package:", thispkg)</span></span>
-<span><span class="co">#&gt;                   objs &lt;- rds[[name]]</span></span>
-<span><span class="co">#&gt;                   lazyLoad(file.path(p, "Rdata"), envir = tmp_env, </span></span>
-<span><span class="co">#&gt;                     filter = function(x) x %in% objs)</span></span>
-<span><span class="co">#&gt;                   break</span></span>
-<span><span class="co">#&gt;                 }</span></span>
-<span><span class="co">#&gt;                 else if (verbose) </span></span>
-<span><span class="co">#&gt;                   message(sprintf("name=%s:\t NOT found in names() of Rdata.rds, i.e.,\n\t%s\n", </span></span>
-<span><span class="co">#&gt;                     name, paste(names(rds), collapse = ",")), </span></span>
-<span><span class="co">#&gt;                     domain = NA)</span></span>
-<span><span class="co">#&gt;             }</span></span>
-<span><span class="co">#&gt;             files &lt;- list.files(p, full.names = TRUE)</span></span>
-<span><span class="co">#&gt;             files &lt;- files[grep(name, files, fixed = TRUE)]</span></span>
-<span><span class="co">#&gt;             if (length(files) &gt; 1L) {</span></span>
-<span><span class="co">#&gt;                 o &lt;- match(fileExt(files), dataExts, nomatch = 100L)</span></span>
-<span><span class="co">#&gt;                 paths0 &lt;- dirname(files)</span></span>
-<span><span class="co">#&gt;                 paths0 &lt;- factor(paths0, levels = unique(paths0))</span></span>
-<span><span class="co">#&gt;                 files &lt;- files[order(paths0, o)]</span></span>
-<span><span class="co">#&gt;             }</span></span>
-<span><span class="co">#&gt;             if (length(files)) {</span></span>
-<span><span class="co">#&gt;                 for (file in files) {</span></span>
-<span><span class="co">#&gt;                   if (verbose) </span></span>
-<span><span class="co">#&gt;                     message("name=", name, ":\t file= ...", .Platform$file.sep, </span></span>
-<span><span class="co">#&gt;                       basename(file), "::\t", appendLF = FALSE, </span></span>
-<span><span class="co">#&gt;                       domain = NA)</span></span>
-<span><span class="co">#&gt;                   ext &lt;- fileExt(file)</span></span>
-<span><span class="co">#&gt;                   if (basename(file) != paste0(name, ".", ext)) </span></span>
-<span><span class="co">#&gt;                     found &lt;- FALSE</span></span>
-<span><span class="co">#&gt;                   else {</span></span>
-<span><span class="co">#&gt;                     found &lt;- TRUE</span></span>
-<span><span class="co">#&gt;                     switch(ext, R = , r = {</span></span>
-<span><span class="co">#&gt;                       library("utils")</span></span>
-<span><span class="co">#&gt;                       sys.source(file, chdir = TRUE, envir = tmp_env)</span></span>
-<span><span class="co">#&gt;                     }, RData = , rdata = , rda = load(file, envir = tmp_env), </span></span>
-<span><span class="co">#&gt;                       TXT = , txt = , tab = , tab.gz = , tab.bz2 = , </span></span>
-<span><span class="co">#&gt;                       tab.xz = , txt.gz = , txt.bz2 = , txt.xz = assign(name, </span></span>
-<span><span class="co">#&gt;                         my_read_table(file, header = TRUE, as.is = FALSE), </span></span>
-<span><span class="co">#&gt;                         envir = tmp_env), CSV = , csv = , csv.gz = , </span></span>
-<span><span class="co">#&gt;                       csv.bz2 = , csv.xz = assign(name, my_read_table(file, </span></span>
-<span><span class="co">#&gt;                         header = TRUE, sep = ";", as.is = FALSE), </span></span>
-<span><span class="co">#&gt;                         envir = tmp_env), found &lt;- FALSE)</span></span>
-<span><span class="co">#&gt;                   }</span></span>
-<span><span class="co">#&gt;                   if (found) </span></span>
-<span><span class="co">#&gt;                     break</span></span>
-<span><span class="co">#&gt;                 }</span></span>
-<span><span class="co">#&gt;                 if (verbose) </span></span>
-<span><span class="co">#&gt;                   message(if (!found) </span></span>
-<span><span class="co">#&gt;                     "*NOT* ", "found", domain = NA)</span></span>
-<span><span class="co">#&gt;             }</span></span>
-<span><span class="co">#&gt;             if (found) </span></span>
-<span><span class="co">#&gt;                 break</span></span>
-<span><span class="co">#&gt;         }</span></span>
-<span><span class="co">#&gt;         if (!found) {</span></span>
-<span><span class="co">#&gt;             warning(gettextf("data set %s not found", sQuote(name)), </span></span>
-<span><span class="co">#&gt;                 domain = NA)</span></span>
-<span><span class="co">#&gt;         }</span></span>
-<span><span class="co">#&gt;         else if (!overwrite) {</span></span>
-<span><span class="co">#&gt;             for (o in ls(envir = tmp_env, all.names = TRUE)) {</span></span>
-<span><span class="co">#&gt;                 if (exists(o, envir = envir, inherits = FALSE)) </span></span>
-<span><span class="co">#&gt;                   warning(gettextf("an object named %s already exists and will not be overwritten", </span></span>
-<span><span class="co">#&gt;                     sQuote(o)))</span></span>
-<span><span class="co">#&gt;                 else assign(o, get(o, envir = tmp_env, inherits = FALSE), </span></span>
-<span><span class="co">#&gt;                   envir = envir)</span></span>
-<span><span class="co">#&gt;             }</span></span>
-<span><span class="co">#&gt;             rm(tmp_env)</span></span>
-<span><span class="co">#&gt;         }</span></span>
-<span><span class="co">#&gt;     }</span></span>
-<span><span class="co">#&gt;     invisible(names)</span></span>
-<span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x10f68ee78&gt;</span></span>
-<span><span class="co">#&gt; &lt;environment: namespace:utils&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 66 × 6</span></span>
+<span><span class="co">#&gt;    indicator_id  snapshot_id period              value  year month</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;         &lt;chr&gt;       &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 MBOPCAHDPPECY 77          2027-12-31 00:00:00   1.3  2027    12</span></span>
+<span><span class="co">#&gt;  2 MBOPCAHDPPECY 77          2026-12-31 00:00:00   1.1  2026    12</span></span>
+<span><span class="co">#&gt;  3 MBOPCAHDPPECY 77          2025-12-31 00:00:00   1.5  2025    12</span></span>
+<span><span class="co">#&gt;  4 MBOPCAHDPPECY 77          2024-12-31 00:00:00   1.7  2024    12</span></span>
+<span><span class="co">#&gt;  5 MBOPCAHDPPECY 77          2023-12-31 00:00:00  -0.1  2023    12</span></span>
+<span><span class="co">#&gt;  6 MBOPCAHDPPECY 77          2022-12-31 00:00:00  -4.7  2022    12</span></span>
+<span><span class="co">#&gt;  7 MBOPCAHDPPECY 77          2021-12-31 00:00:00  -2.1  2021    12</span></span>
+<span><span class="co">#&gt;  8 MBOPCAHDPPECY 77          2020-12-31 00:00:00   1.8  2020    12</span></span>
+<span><span class="co">#&gt;  9 MBOPCAHDPPECY 77          2019-12-31 00:00:00   0.3  2019    12</span></span>
+<span><span class="co">#&gt; 10 MBOPCAHDPPECY 77          2018-12-31 00:00:00   0.4  2018    12</span></span>
+<span><span class="co">#&gt; # ℹ 56 more rows</span></span></code></pre></div>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get data for multiple indicators at once</span></span>
 <span><span class="va">multi_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span>indicator_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MBOPCAHDPPECY"</span>, <span class="st">"MBOPCCHDPPECY"</span><span class="op">)</span>,</span>
 <span>                            period_to <span class="op">=</span> <span class="st">"20231231"</span>,</span>
 <span>                            period_from <span class="op">=</span> <span class="st">"20201031"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.</span></span>
 <span><span class="va">multi_data</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'multi_data' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 8 × 6</span></span>
+<span><span class="co">#&gt;   indicator_id  snapshot_id period              value  year month</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;         &lt;chr&gt;       &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 MBOPCAHDPPECY 77          2023-12-31 00:00:00  -0.1  2023    12</span></span>
+<span><span class="co">#&gt; 2 MBOPCAHDPPECY 77          2022-12-31 00:00:00  -4.7  2022    12</span></span>
+<span><span class="co">#&gt; 3 MBOPCAHDPPECY 77          2021-12-31 00:00:00  -2.1  2021    12</span></span>
+<span><span class="co">#&gt; 4 MBOPCAHDPPECY 77          2020-12-31 00:00:00   1.8  2020    12</span></span>
+<span><span class="co">#&gt; 5 MBOPCCHDPPECY 77          2023-12-31 00:00:00   1    2023    12</span></span>
+<span><span class="co">#&gt; 6 MBOPCCHDPPECY 77          2022-12-31 00:00:00  -4.1  2022    12</span></span>
+<span><span class="co">#&gt; 7 MBOPCCHDPPECY 77          2021-12-31 00:00:00  -0.4  2021    12</span></span>
+<span><span class="co">#&gt; 8 MBOPCCHDPPECY 77          2020-12-31 00:00:00   2.9  2020    12</span></span></code></pre></div>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get raw data without processing (returns raw CSV data)</span></span>
 <span><span class="va">raw_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>, process_data <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.</span></span></code></pre></div>
+<span><span class="co">#&gt; File already exists at /var/folders/fr/6f85xds52pq7g55fpmk4z7f80000gn/T//RtmpCVG09p/arad_SRUMD08402C.csv. Loading from cache. Use force_redownload = TRUE to redownload.</span></span></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get data with both filters and rename the value column</span></span>
 <span><span class="va">spending</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>,</span>
 <span>                           period_from <span class="op">=</span> <span class="st">"20121231"</span>,</span>
 <span>                           period_to <span class="op">=</span> <span class="st">"20241231"</span>,</span>
 <span>                           rename_value <span class="op">=</span> <span class="st">"government_spending"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.</span></span>
+<span><span class="co">#&gt; File already exists at /var/folders/fr/6f85xds52pq7g55fpmk4z7f80000gn/T//RtmpCVG09p/arad_SRUMD08402C_20121231_20241231.csv. Loading from cache. Use force_redownload = TRUE to redownload.</span></span>
 <span><span class="va">spending</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'spending' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 145 × 6</span></span>
+<span><span class="co">#&gt;    indicator_id snapshot_id period              government_spending  year month</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;       &lt;dttm&gt;                            &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 SRUMD08402C  &lt;NA&gt;        2024-12-31 00:00:00             2.24e12  2024    12</span></span>
+<span><span class="co">#&gt;  2 SRUMD08402C  &lt;NA&gt;        2024-11-30 00:00:00             2.00e12  2024    11</span></span>
+<span><span class="co">#&gt;  3 SRUMD08402C  &lt;NA&gt;        2024-10-31 00:00:00             1.80e12  2024    10</span></span>
+<span><span class="co">#&gt;  4 SRUMD08402C  &lt;NA&gt;        2024-09-30 00:00:00             1.63e12  2024     9</span></span>
+<span><span class="co">#&gt;  5 SRUMD08402C  &lt;NA&gt;        2024-08-31 00:00:00             1.45e12  2024     8</span></span>
+<span><span class="co">#&gt;  6 SRUMD08402C  &lt;NA&gt;        2024-07-31 00:00:00             1.30e12  2024     7</span></span>
+<span><span class="co">#&gt;  7 SRUMD08402C  &lt;NA&gt;        2024-06-30 00:00:00             1.13e12  2024     6</span></span>
+<span><span class="co">#&gt;  8 SRUMD08402C  &lt;NA&gt;        2024-05-31 00:00:00             9.32e11  2024     5</span></span>
+<span><span class="co">#&gt;  9 SRUMD08402C  &lt;NA&gt;        2024-04-30 00:00:00             7.45e11  2024     4</span></span>
+<span><span class="co">#&gt; 10 SRUMD08402C  &lt;NA&gt;        2024-03-31 00:00:00             5.54e11  2024     3</span></span>
+<span><span class="co">#&gt; # ℹ 135 more rows</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -398,15 +332,22 @@ the ARAD data.</p>
 <span></span>
 <span><span class="co"># 1. Find relevant indicators</span></span>
 <span><span class="va">indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_list_indicators.html">arad_list_indicators</a></span><span class="op">(</span>base_id <span class="op">=</span> <span class="st">"SHDPZDR"</span>, filter <span class="op">=</span> <span class="st">"HDP"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve indicators from ARAD API: HTTP 400 Bad Request.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">indicators</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'indicators' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 6 × 7</span></span>
+<span><span class="co">#&gt;   indicator_id      indicator_name      frequency_code frequency_name unit_mult_code unit_mult_name unit </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;             &lt;chr&gt;               &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 SHDPZDRQ1B1GIPSA  Zdroje HDP:Čtvrtle… Q              Čtvrtletní     0              jednotky       proc…</span></span>
+<span><span class="co">#&gt; 2 SHDPZDRQ1B1GMIPSA Zdroje HDP:Čtvrtle… Q              Čtvrtletní     0              jednotky       proc…</span></span>
+<span><span class="co">#&gt; 3 SHDPZDRQ1B1GISNA  Zdroje HDP:Čtvrtle… Q              Čtvrtletní     0              jednotky       proc…</span></span>
+<span><span class="co">#&gt; 4 SHDPZDRQ1D31ISNA  Zdroje HDP:Čtvrtle… Q              Čtvrtletní     0              jednotky       proc…</span></span>
+<span><span class="co">#&gt; 5 SHDPZDRQ1B1GMISNA Zdroje HDP:Čtvrtle… Q              Čtvrtletní     0              jednotky       proc…</span></span>
+<span><span class="co">#&gt; 6 SHDPZDRQ1B1GMLSA  Zdroje HDP:Čtvrtle… Q              Čtvrtletní     6              milióny        CZK</span></span></code></pre></div>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 2. Get the data (assuming we found a GDP indicator)</span></span>
 <span><span class="va">gdp_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span>,</span>
 <span>                           rename_value <span class="op">=</span> <span class="st">"gdp"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html" class="external-link">month</a></span><span class="op">(</span><span class="va">period</span><span class="op">)</span> <span class="op">==</span> <span class="fl">12</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.</span></span>
+<span><span class="co">#&gt; File already exists at /var/folders/fr/6f85xds52pq7g55fpmk4z7f80000gn/T//RtmpCVG09p/arad_SRUMD08402C.csv. Loading from cache. Use force_redownload = TRUE to redownload.</span></span>
 <span></span>
 <span><span class="co"># 3. Process and analyze</span></span>
 <span><span class="va">recent_gdp</span> <span class="op">&lt;-</span> <span class="va">gdp_data</span>  <span class="op">|&gt;</span></span>
@@ -416,7 +357,6 @@ the ARAD data.</p>
 <span>    gdp_growth <span class="op">=</span> <span class="op">(</span><span class="va">gdp</span> <span class="op">/</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html" class="external-link">lag</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>,</span>
 <span>    is_recession <span class="op">=</span> <span class="va">gdp_growth</span> <span class="op">&lt;</span> <span class="fl">0</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'gdp_data' not found</span></span>
 <span></span>
 <span><span class="co"># 4. Summary statistics</span></span>
 <span><span class="va">gdp_summary</span> <span class="op">&lt;-</span> <span class="va">recent_gdp</span> <span class="op">|&gt;</span></span>
@@ -427,10 +367,12 @@ the ARAD data.</p>
 <span>    latest_gdp <span class="op">=</span> <span class="va">gdp</span><span class="op">[</span><span class="va">year</span> <span class="op">==</span> <span class="va">latest_year</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
 <span>    recession_years <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">is_recession</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'recent_gdp' not found</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">gdp_summary</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'gdp_summary' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 1 × 5</span></span>
+<span><span class="co">#&gt;   mean_gdp mean_growth latest_year latest_gdp recession_years</span></span>
+<span><span class="co">#&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;           &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  1.52e12        4.99        2024    2.24e12               3</span></span></code></pre></div>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 5. Create visualization</span></span>
 <span><span class="va">gdp_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">recent_gdp</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -451,10 +393,17 @@ the ARAD data.</p>
 <span>    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span>, color <span class="op">=</span> <span class="st">"gray60"</span><span class="op">)</span>,</span>
 <span>    text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#001F3F"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'recent_gdp' not found</span></span>
+<span><span class="co">#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.</span></span>
+<span><span class="co">#&gt; ℹ Please use `linewidth` instead.</span></span>
+<span><span class="co">#&gt; This warning is displayed once every 8 hours.</span></span>
+<span><span class="co">#&gt; Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">gdp_plot</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'gdp_plot' not found</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">gdp_plot</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="reference/figures/README-unnamed-chunk-24-1.png" alt="plot of chunk unnamed-chunk-24" width="100%"><p class="caption">
+plot of chunk unnamed-chunk-24
+</p>
+</div>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 6. Growth rate visualization</span></span>
 <span><span class="va">growth_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">recent_gdp</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdp_growth</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -476,10 +425,14 @@ the ARAD data.</p>
 <span>    text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#001F3F"</span><span class="op">)</span>,</span>
 <span>    legend.position <span class="op">=</span> <span class="st">"bottom"</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'recent_gdp' not found</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">growth_plot</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'growth_plot' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; Warning: Removed 1 row containing missing values or values outside the scale range (`geom_col()`).</span></span></code></pre></div>
+<div class="figure">
+<img src="reference/figures/README-unnamed-chunk-25-1.png" alt="plot of chunk unnamed-chunk-25" width="100%"><p class="caption">
+plot of chunk unnamed-chunk-25
+</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="data-format-and-structure">Data format and structure<a class="anchor" aria-label="anchor" href="#data-format-and-structure"></a>
@@ -506,9 +459,15 @@ series.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Example of typical data structure</span></span>
 <span><span class="va">sample_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/arad_get_data.html">arad_get_data</a></span><span class="op">(</span><span class="st">"SRUMD08402C"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond): Failed to retrieve data from ARAD API: HTTP 400 Bad Request.</span></span>
+<span><span class="co">#&gt; File already exists at /var/folders/fr/6f85xds52pq7g55fpmk4z7f80000gn/T//RtmpCVG09p/arad_SRUMD08402C.csv. Loading from cache. Use force_redownload = TRUE to redownload.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">sample_data</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'sample_data' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; tibble [392 × 6] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ indicator_id: chr [1:392] "SRUMD08402C" "SRUMD08402C" "SRUMD08402C" "SRUMD08402C" ...</span></span>
+<span><span class="co">#&gt;  $ snapshot_id : chr [1:392] NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ period      : POSIXct[1:392], format: "2025-08-31" "2025-07-31" "2025-06-30" ...</span></span>
+<span><span class="co">#&gt;  $ value       : num [1:392] 1.50e+12 1.34e+12 1.16e+12 9.45e+11 7.49e+11 ...</span></span>
+<span><span class="co">#&gt;  $ year        : num [1:392] 2025 2025 2025 2025 2025 ...</span></span>
+<span><span class="co">#&gt;  $ month       : num [1:392] 8 7 6 5 4 3 2 1 12 11 ...</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="api-endpoints-used">API endpoints used<a class="anchor" aria-label="anchor" href="#api-endpoints-used"></a>
