@@ -52,12 +52,23 @@ remotes::install_github("petrbouchal/cnbrrr")
 
 ## Setup
 
-- obtain an API key from the Czech National Bank (requires registration)
+- obtain an API key from the Czech National Bank (free and automatic,
+  but requires registration at <https://www.cnb.cz/arad/>)
 - set it as an environment variable:
 
 ``` r
 Sys.setenv(ARAD_API_KEY = "your_api_key_here")
 ```
+
+or better in your `.Renviron` file:
+
+``` r
+usethis::edit_r_environ()
+```
+
+then add (don’t forget newline at end of file, and to restart R):
+
+    ARAD_API_KEY=your_api_key_here
 
 ## Quick example
 
@@ -95,20 +106,20 @@ data <- arad_get_data("SRUMD08402C")
 data
 ```
 
-    # A tibble: 389 × 6
+    # A tibble: 392 × 6
        indicator_id snapshot_id period                value  year month
        <chr>        <chr>       <dttm>                <dbl> <dbl> <dbl>
-     1 SRUMD08402C  <NA>        2025-05-31 00:00:00 9.45e11  2025     5
-     2 SRUMD08402C  <NA>        2025-04-30 00:00:00 7.49e11  2025     4
-     3 SRUMD08402C  <NA>        2025-03-31 00:00:00 5.68e11  2025     3
-     4 SRUMD08402C  <NA>        2025-02-28 00:00:00 3.65e11  2025     2
-     5 SRUMD08402C  <NA>        2025-01-31 00:00:00 1.73e11  2025     1
-     6 SRUMD08402C  <NA>        2024-12-31 00:00:00 2.24e12  2024    12
-     7 SRUMD08402C  <NA>        2024-11-30 00:00:00 2.00e12  2024    11
-     8 SRUMD08402C  <NA>        2024-10-31 00:00:00 1.80e12  2024    10
-     9 SRUMD08402C  <NA>        2024-09-30 00:00:00 1.63e12  2024     9
-    10 SRUMD08402C  <NA>        2024-08-31 00:00:00 1.45e12  2024     8
-    # ℹ 379 more rows
+     1 SRUMD08402C  <NA>        2025-08-31 00:00:00 1.50e12  2025     8
+     2 SRUMD08402C  <NA>        2025-07-31 00:00:00 1.34e12  2025     7
+     3 SRUMD08402C  <NA>        2025-06-30 00:00:00 1.16e12  2025     6
+     4 SRUMD08402C  <NA>        2025-05-31 00:00:00 9.45e11  2025     5
+     5 SRUMD08402C  <NA>        2025-04-30 00:00:00 7.49e11  2025     4
+     6 SRUMD08402C  <NA>        2025-03-31 00:00:00 5.68e11  2025     3
+     7 SRUMD08402C  <NA>        2025-02-28 00:00:00 3.65e11  2025     2
+     8 SRUMD08402C  <NA>        2025-01-31 00:00:00 1.73e11  2025     1
+     9 SRUMD08402C  <NA>        2024-12-31 00:00:00 2.24e12  2024    12
+    10 SRUMD08402C  <NA>        2024-11-30 00:00:00 2.00e12  2024    11
+    # ℹ 382 more rows
 
 See the [Get started](articles/cnbrrr.html) vignette for detailed
 workflows and examples.

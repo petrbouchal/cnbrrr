@@ -47,11 +47,23 @@ remotes::install_github("petrbouchal/cnbrrr")
 
 ## Setup
 
-- obtain an API key from the Czech National Bank (requires registration)
+- obtain an API key from the Czech National Bank (free and automatic, but requires registration at <https://www.cnb.cz/arad/>)
 - set it as an environment variable:
 
 ```r
 Sys.setenv(ARAD_API_KEY = "your_api_key_here")
+```
+
+or better in your `.Renviron` file:
+
+```r
+usethis::edit_r_environ()
+```
+
+then add (don't forget newline at end of file, and to restart R):
+
+```
+ARAD_API_KEY=your_api_key_here
 ```
 
 ## Quick example

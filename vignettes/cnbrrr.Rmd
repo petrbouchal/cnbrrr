@@ -23,12 +23,27 @@ remotes::install_github("petrbouchal/cnbrrr")
 
 ## Setup
 
-Before using the package, obtain an API key from the Czech National Bank and set it as an environment variable:
+Before using the package, obtain an API key from the Czech National Bank.
+This is free and automatic but requires registration at the [ARAD website](https://www.cnb.cz/arad/).
+
+Set it as an environment variable:
 
 
 ``` r
 # Set your API key
 Sys.setenv(ARAD_API_KEY = "your_api_key_here")
+```
+
+Ideally set it in your `.Renviron` file for persistence and security:
+
+```r
+usethis::edit_r_environ()
+```
+
+then add (don't forget newline at end of file, and to restart R):
+
+```
+ARAD_API_KEY=your_api_key_here
 ```
 
 Alternatively, you can pass the API key directly to function calls.
@@ -47,9 +62,10 @@ library(cnbrrr)
 indicators <- arad_list_indicators(set_id = 1115, filter = "podnik")
 head(indicators)
 #> # A tibble: 1 × 7
-#>   indicator_id indicator_name           frequency_code frequency_name unit_mult_code unit_mult_name unit 
-#>   <chr>        <chr>                    <chr>          <chr>          <chr>          <chr>          <chr>
-#> 1 SRDM02712C   Inkasa celostátních daň… M              Měsíční        6              milióny        CZK
+#>   indicator_id indicator_name           frequency_code frequency_name unit_mult_code
+#>   <chr>        <chr>                    <chr>          <chr>          <chr>         
+#> 1 SRDM02712C   Inkasa celostátních daň… M              Měsíční        6             
+#> # ℹ 2 more variables: unit_mult_name <chr>, unit <chr>
 ```
 
 
@@ -58,19 +74,20 @@ head(indicators)
 gdp_indicators <- arad_list_indicators(set_id = 1032, filter = "Místní vládní instituce")
 gdp_indicators
 #> # A tibble: 78 × 7
-#>    indicator_id    indicator_name       frequency_code frequency_name unit_mult_code unit_mult_name unit 
-#>    <chr>           <chr>                <chr>          <chr>          <chr>          <chr>          <chr>
-#>  1 SFU0QS1313L01LE Finanční účty, Akti… Q              Čtvrtletní     6              milióny        CZK  
-#>  2 SFU0QS1313L01T  Finanční účty, Akti… Q              Čtvrtletní     6              milióny        CZK  
-#>  3 SFU0QS1313A01LE Finanční účty, Akti… Q              Čtvrtletní     6              milióny        CZK  
-#>  4 SFU0QS1313A01T  Finanční účty, Akti… Q              Čtvrtletní     6              milióny        CZK  
-#>  5 SFU2QS1313L05T  Finanční účty, F2 O… Q              Čtvrtletní     6              milióny        CZK  
-#>  6 SFU2QS1313A05LE Finanční účty, F2 O… Q              Čtvrtletní     6              milióny        CZK  
-#>  7 SFU2QS1313A05T  Finanční účty, F2 O… Q              Čtvrtletní     6              milióny        CZK  
-#>  8 SFU2QS1313A06LE Finanční účty, F2 O… Q              Čtvrtletní     6              milióny        CZK  
-#>  9 SFU2QS1313A06T  Finanční účty, F2 O… Q              Čtvrtletní     6              milióny        CZK  
-#> 10 SFU2QS1313L07T  Finanční účty, F2 O… Q              Čtvrtletní     6              milióny        CZK  
+#>    indicator_id    indicator_name       frequency_code frequency_name unit_mult_code
+#>    <chr>           <chr>                <chr>          <chr>          <chr>         
+#>  1 SFU0QS1313L01LE Finanční účty, Akti… Q              Čtvrtletní     6             
+#>  2 SFU0QS1313L01T  Finanční účty, Akti… Q              Čtvrtletní     6             
+#>  3 SFU0QS1313A01LE Finanční účty, Akti… Q              Čtvrtletní     6             
+#>  4 SFU0QS1313A01T  Finanční účty, Akti… Q              Čtvrtletní     6             
+#>  5 SFU2QS1313L05T  Finanční účty, F2 O… Q              Čtvrtletní     6             
+#>  6 SFU2QS1313A05LE Finanční účty, F2 O… Q              Čtvrtletní     6             
+#>  7 SFU2QS1313A05T  Finanční účty, F2 O… Q              Čtvrtletní     6             
+#>  8 SFU2QS1313A06LE Finanční účty, F2 O… Q              Čtvrtletní     6             
+#>  9 SFU2QS1313A06T  Finanční účty, F2 O… Q              Čtvrtletní     6             
+#> 10 SFU2QS1313L07T  Finanční účty, F2 O… Q              Čtvrtletní     6             
 #> # ℹ 68 more rows
+#> # ℹ 2 more variables: unit_mult_name <chr>, unit <chr>
 ```
 
 
@@ -79,9 +96,10 @@ gdp_indicators
 specific_indicators <- arad_list_indicators(indicator_id_list = "SFU2QS1313L05T")
 specific_indicators
 #> # A tibble: 1 × 7
-#>   indicator_id   indicator_name         frequency_code frequency_name unit_mult_code unit_mult_name unit 
-#>   <chr>          <chr>                  <chr>          <chr>          <chr>          <chr>          <chr>
-#> 1 SFU2QS1313L05T Finanční účty, F2 Obě… Q              Čtvrtletní     6              milióny        CZK
+#>   indicator_id   indicator_name         frequency_code frequency_name unit_mult_code
+#>   <chr>          <chr>                  <chr>          <chr>          <chr>         
+#> 1 SFU2QS1313L05T Finanční účty, F2 Obě… Q              Čtvrtletní     6             
+#> # ℹ 2 more variables: unit_mult_name <chr>, unit <chr>
 ```
 
 
@@ -90,10 +108,11 @@ specific_indicators
 multiple_indicators <- arad_list_indicators(indicator_id_list = c("SFU2QS1313L05T", "SFU2QS1313A06LE"))
 multiple_indicators
 #> # A tibble: 2 × 7
-#>   indicator_id    indicator_name        frequency_code frequency_name unit_mult_code unit_mult_name unit 
-#>   <chr>           <chr>                 <chr>          <chr>          <chr>          <chr>          <chr>
-#> 1 SFU2QS1313L05T  Finanční účty, F2 Ob… Q              Čtvrtletní     6              milióny        CZK  
-#> 2 SFU2QS1313A06LE Finanční účty, F2 Ob… Q              Čtvrtletní     6              milióny        CZK
+#>   indicator_id    indicator_name        frequency_code frequency_name unit_mult_code
+#>   <chr>           <chr>                 <chr>          <chr>          <chr>         
+#> 1 SFU2QS1313L05T  Finanční účty, F2 Ob… Q              Čtvrtletní     6             
+#> 2 SFU2QS1313A06LE Finanční účty, F2 Ob… Q              Čtvrtletní     6             
+#> # ℹ 2 more variables: unit_mult_name <chr>, unit <chr>
 ```
 
 
@@ -111,14 +130,15 @@ Explore the structure and organization of indicators:
 indicators_in_base <- arad_list_indicators(base_id = "MBOP")
 head(indicators_in_base)
 #> # A tibble: 6 × 7
-#>   indicator_id  indicator_name          frequency_code frequency_name unit_mult_code unit_mult_name unit 
-#>   <chr>         <chr>                   <chr>          <chr>          <chr>          <chr>          <chr>
-#> 1 MBOPCAHDPPECY Platební bilance:Běžný… Y              Roční          0              jednotky       proc…
-#> 2 MBOPCCHDPPECY Platební bilance:Běžný… Y              Roční          0              jednotky       proc…
-#> 3 MBOPDICZXVOLY Platební bilance:Přímé… Y              Roční          9              miliardy       CZK  
-#> 4 MBOPLPIXXVOLY Platební bilance:Pasiv… Y              Roční          9              miliardy       CZK  
-#> 5 MBOPADSXXVOLY Platební bilance:Aktiv… Y              Roční          9              miliardy       CZK  
-#> 6 MBOPAPIXXVOLY Platební bilance:Aktiv… Y              Roční          9              miliardy       CZK
+#>   indicator_id  indicator_name          frequency_code frequency_name unit_mult_code
+#>   <chr>         <chr>                   <chr>          <chr>          <chr>         
+#> 1 MBOPCAHDPPECY Platební bilance:Běžný… Y              Roční          0             
+#> 2 MBOPCCHDPPECY Platební bilance:Běžný… Y              Roční          0             
+#> 3 MBOPDICZXVOLY Platební bilance:Přímé… Y              Roční          9             
+#> 4 MBOPLPIXXVOLY Platební bilance:Pasiv… Y              Roční          9             
+#> 5 MBOPADSXXVOLY Platební bilance:Aktiv… Y              Roční          9             
+#> 6 MBOPAPIXXVOLY Platební bilance:Aktiv… Y              Roční          9             
+#> # ℹ 2 more variables: unit_mult_name <chr>, unit <chr>
 ```
 
 
@@ -127,14 +147,15 @@ head(indicators_in_base)
 dims <- arad_indicators_dims(set_id = 1115)
 head(dims)
 #> # A tibble: 6 × 8
-#>   indicator_id base_code base_name               dim_code dim_name dim_value_code dim_value_name dim_rank
-#>   <chr>        <chr>     <chr>                   <chr>    <chr>    <chr>          <chr>          <chr>   
-#> 1 SRDM01202C   SRD       Inkasa celostátních da… FREKVEN… Frekven… M              Měsíční        1       
-#> 2 SRDM01202C   SRD       Inkasa celostátních da… STO      Položka… 012            Daň z přidané… 2       
-#> 3 SRDM01202C   SRD       Inkasa celostátních da… COUNTER… Sektor … 02             Ekonomika cel… 3       
-#> 4 SRDM01202C   SRD       Inkasa celostátních da… CUMMUL   Kumulace C              Hodnoty kumul… 4000    
-#> 5 SRDM01302C   SRD       Inkasa celostátních da… FREKVEN… Frekven… M              Měsíční        1       
-#> 6 SRDM01302C   SRD       Inkasa celostátních da… STO      Položka… 013            Clo            2
+#>   indicator_id base_code base_name   dim_code dim_name dim_value_code dim_value_name
+#>   <chr>        <chr>     <chr>       <chr>    <chr>    <chr>          <chr>         
+#> 1 SRDM01202C   SRD       Inkasa cel… FREKVEN… Frekven… M              Měsíční       
+#> 2 SRDM01202C   SRD       Inkasa cel… STO      Položka… 012            Daň z přidané…
+#> 3 SRDM01202C   SRD       Inkasa cel… COUNTER… Sektor … 02             Ekonomika cel…
+#> 4 SRDM01202C   SRD       Inkasa cel… CUMMUL   Kumulace C              Hodnoty kumul…
+#> 5 SRDM01302C   SRD       Inkasa cel… FREKVEN… Frekven… M              Měsíční       
+#> 6 SRDM01302C   SRD       Inkasa cel… STO      Položka… 013            Clo           
+#> # ℹ 1 more variable: dim_rank <chr>
 ```
 
 
@@ -143,18 +164,19 @@ head(dims)
 specific_dims <- arad_indicators_dims(indicator_id_list = c("SFU2QS1313L05T", "SFU2QS1313A06LE"))
 specific_dims
 #> # A tibble: 10 × 8
-#>    indicator_id    base_code base_name           dim_code dim_name dim_value_code dim_value_name dim_rank
-#>    <chr>           <chr>     <chr>               <chr>    <chr>    <chr>          <chr>          <chr>   
-#>  1 SFU2QS1313A06LE SFU2      Finanční účty, F2 … FREKVEN… Frekven… Q              "Čtvrtletní"   1       
-#>  2 SFU2QS1313A06LE SFU2      Finanční účty, F2 … SEKTOR_… Sektory… S1313          "Místní vládn… 2       
-#>  3 SFU2QS1313A06LE SFU2      Finanční účty, F2 … BALANCE  Balance  A              "Aktiva"       3       
-#>  4 SFU2QS1313A06LE SFU2      Finanční účty, F2 … FIN_UCT  Finančn… 06             "Oběživo "     4       
-#>  5 SFU2QS1313A06LE SFU2      Finanční účty, F2 … ST       Stavy/t… LE             "Stavy"        5       
-#>  6 SFU2QS1313L05T  SFU2      Finanční účty, F2 … FREKVEN… Frekven… Q              "Čtvrtletní"   1       
-#>  7 SFU2QS1313L05T  SFU2      Finanční účty, F2 … SEKTOR_… Sektory… S1313          "Místní vládn… 2       
-#>  8 SFU2QS1313L05T  SFU2      Finanční účty, F2 … BALANCE  Balance  L              "Pasiva"       3       
-#>  9 SFU2QS1313L05T  SFU2      Finanční účty, F2 … FIN_UCT  Finančn… 05             "Oběživo a vk… 4       
-#> 10 SFU2QS1313L05T  SFU2      Finanční účty, F2 … ST       Stavy/t… T              "Transakce"    5
+#>    indicator_id  base_code base_name dim_code dim_name dim_value_code dim_value_name
+#>    <chr>         <chr>     <chr>     <chr>    <chr>    <chr>          <chr>         
+#>  1 SFU2QS1313A0… SFU2      Finanční… FREKVEN… Frekven… Q              "Čtvrtletní"  
+#>  2 SFU2QS1313A0… SFU2      Finanční… SEKTOR_… Sektory… S1313          "Místní vládn…
+#>  3 SFU2QS1313A0… SFU2      Finanční… BALANCE  Balance  A              "Aktiva"      
+#>  4 SFU2QS1313A0… SFU2      Finanční… FIN_UCT  Finančn… 06             "Oběživo "    
+#>  5 SFU2QS1313A0… SFU2      Finanční… ST       Stavy/t… LE             "Stavy"       
+#>  6 SFU2QS1313L0… SFU2      Finanční… FREKVEN… Frekven… Q              "Čtvrtletní"  
+#>  7 SFU2QS1313L0… SFU2      Finanční… SEKTOR_… Sektory… S1313          "Místní vládn…
+#>  8 SFU2QS1313L0… SFU2      Finanční… BALANCE  Balance  L              "Pasiva"      
+#>  9 SFU2QS1313L0… SFU2      Finanční… FIN_UCT  Finančn… 05             "Oběživo a vk…
+#> 10 SFU2QS1313L0… SFU2      Finanční… ST       Stavy/t… T              "Transakce"   
+#> # ℹ 1 more variable: dim_rank <chr>
 ```
 
 
@@ -213,6 +235,7 @@ Get time series data for the indicators you need:
 ``` r
 # Get data for a single indicator
 data <- arad_get_data(c("MBOPCAHDPPECY", "MBOPCCHDPPECY"))
+#> File already exists at /var/folders/fr/6f85xds52pq7g55fpmk4z7f80000gn/T//RtmpIyo23f/arad_MBOPCAHDPPECY_MBOPCCHDPPECY.csv. Loading from cache. Use force_redownload = TRUE to redownload.
 data
 #> # A tibble: 66 × 6
 #>    indicator_id  snapshot_id period              value  year month
@@ -236,6 +259,7 @@ data
 multi_data <- arad_get_data(indicator_ids = c("MBOPCAHDPPECY", "MBOPCCHDPPECY"),
                             period_to = "20231231",
                             period_from = "20201031")
+#> File already exists at /var/folders/fr/6f85xds52pq7g55fpmk4z7f80000gn/T//RtmpIyo23f/arad_MBOPCAHDPPECY_MBOPCCHDPPECY_20201031_20231231.csv. Loading from cache. Use force_redownload = TRUE to redownload.
 multi_data
 #> # A tibble: 8 × 6
 #>   indicator_id  snapshot_id period              value  year month
@@ -254,7 +278,7 @@ multi_data
 ``` r
 # Get raw data without processing (returns raw CSV data)
 raw_data <- arad_get_data("SRUMD08402C", process_data = FALSE)
-#> File already exists at /var/folders/fr/6f85xds52pq7g55fpmk4z7f80000gn/T//RtmpCVG09p/arad_SRUMD08402C.csv. Loading from cache. Use force_redownload = TRUE to redownload.
+#> File already exists at /var/folders/fr/6f85xds52pq7g55fpmk4z7f80000gn/T//RtmpIyo23f/arad_SRUMD08402C.csv. Loading from cache. Use force_redownload = TRUE to redownload.
 ```
 
 
@@ -264,7 +288,7 @@ spending <- arad_get_data("SRUMD08402C",
                            period_from = "20121231",
                            period_to = "20241231",
                            rename_value = "government_spending")
-#> File already exists at /var/folders/fr/6f85xds52pq7g55fpmk4z7f80000gn/T//RtmpCVG09p/arad_SRUMD08402C_20121231_20241231.csv. Loading from cache. Use force_redownload = TRUE to redownload.
+#> File already exists at /var/folders/fr/6f85xds52pq7g55fpmk4z7f80000gn/T//RtmpIyo23f/arad_SRUMD08402C_20121231_20241231.csv. Loading from cache. Use force_redownload = TRUE to redownload.
 spending
 #> # A tibble: 145 × 6
 #>    indicator_id snapshot_id period              government_spending  year month
@@ -320,14 +344,15 @@ library(ggplot2)
 indicators <- arad_list_indicators(base_id = "SHDPZDR", filter = "HDP")
 print(head(indicators))
 #> # A tibble: 6 × 7
-#>   indicator_id      indicator_name      frequency_code frequency_name unit_mult_code unit_mult_name unit 
-#>   <chr>             <chr>               <chr>          <chr>          <chr>          <chr>          <chr>
-#> 1 SHDPZDRQ1B1GIPSA  Zdroje HDP:Čtvrtle… Q              Čtvrtletní     0              jednotky       proc…
-#> 2 SHDPZDRQ1B1GMIPSA Zdroje HDP:Čtvrtle… Q              Čtvrtletní     0              jednotky       proc…
-#> 3 SHDPZDRQ1B1GISNA  Zdroje HDP:Čtvrtle… Q              Čtvrtletní     0              jednotky       proc…
-#> 4 SHDPZDRQ1D31ISNA  Zdroje HDP:Čtvrtle… Q              Čtvrtletní     0              jednotky       proc…
-#> 5 SHDPZDRQ1B1GMISNA Zdroje HDP:Čtvrtle… Q              Čtvrtletní     0              jednotky       proc…
-#> 6 SHDPZDRQ1B1GMLSA  Zdroje HDP:Čtvrtle… Q              Čtvrtletní     6              milióny        CZK
+#>   indicator_id      indicator_name      frequency_code frequency_name unit_mult_code
+#>   <chr>             <chr>               <chr>          <chr>          <chr>         
+#> 1 SHDPZDRQ1B1GIPSA  Zdroje HDP:Čtvrtle… Q              Čtvrtletní     0             
+#> 2 SHDPZDRQ1B1GMIPSA Zdroje HDP:Čtvrtle… Q              Čtvrtletní     0             
+#> 3 SHDPZDRQ1B1GISNA  Zdroje HDP:Čtvrtle… Q              Čtvrtletní     0             
+#> 4 SHDPZDRQ1D31ISNA  Zdroje HDP:Čtvrtle… Q              Čtvrtletní     0             
+#> 5 SHDPZDRQ1B1GMISNA Zdroje HDP:Čtvrtle… Q              Čtvrtletní     0             
+#> 6 SHDPZDRQ1B1GMLSA  Zdroje HDP:Čtvrtle… Q              Čtvrtletní     6             
+#> # ℹ 2 more variables: unit_mult_name <chr>, unit <chr>
 ```
 
 
@@ -336,7 +361,7 @@ print(head(indicators))
 gdp_data <- arad_get_data("SRUMD08402C",
                            rename_value = "gdp") |>
   filter(lubridate::month(period) == 12)
-#> File already exists at /var/folders/fr/6f85xds52pq7g55fpmk4z7f80000gn/T//RtmpCVG09p/arad_SRUMD08402C.csv. Loading from cache. Use force_redownload = TRUE to redownload.
+#> File already exists at /var/folders/fr/6f85xds52pq7g55fpmk4z7f80000gn/T//RtmpIyo23f/arad_SRUMD08402C.csv. Loading from cache. Use force_redownload = TRUE to redownload.
 
 # 3. Process and analyze
 recent_gdp <- gdp_data  |>
@@ -385,10 +410,6 @@ gdp_plot <- ggplot(recent_gdp, aes(x = year, y = gdp)) +
     plot.subtitle = element_text(size = 12, color = "gray60"),
     text = element_text(color = "#001F3F")
   )
-#> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-#> ℹ Please use `linewidth` instead.
-#> This warning is displayed once every 8 hours.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
 
 print(gdp_plot)
 ```
@@ -422,7 +443,8 @@ growth_plot <- ggplot(recent_gdp, aes(x = year, y = gdp_growth)) +
   )
 
 print(growth_plot)
-#> Warning: Removed 1 row containing missing values or values outside the scale range (`geom_col()`).
+#> Warning: Removed 1 row containing missing values or values outside the scale range
+#> (`geom_col()`).
 ```
 
 <div class="figure">
@@ -446,12 +468,12 @@ Additional columns may be present depending on the specific data series.
 ``` r
 # Example of typical data structure
 sample_data <- arad_get_data("SRUMD08402C")
-#> File already exists at /var/folders/fr/6f85xds52pq7g55fpmk4z7f80000gn/T//RtmpCVG09p/arad_SRUMD08402C.csv. Loading from cache. Use force_redownload = TRUE to redownload.
+#> File already exists at /var/folders/fr/6f85xds52pq7g55fpmk4z7f80000gn/T//RtmpIyo23f/arad_SRUMD08402C.csv. Loading from cache. Use force_redownload = TRUE to redownload.
 str(sample_data)
 #> tibble [392 × 6] (S3: tbl_df/tbl/data.frame)
 #>  $ indicator_id: chr [1:392] "SRUMD08402C" "SRUMD08402C" "SRUMD08402C" "SRUMD08402C" ...
 #>  $ snapshot_id : chr [1:392] NA NA NA NA ...
-#>  $ period      : POSIXct[1:392], format: "2025-08-31" "2025-07-31" "2025-06-30" ...
+#>  $ period      : POSIXct[1:392], format: "2025-08-31" "2025-07-31" ...
 #>  $ value       : num [1:392] 1.50e+12 1.34e+12 1.16e+12 9.45e+11 7.49e+11 ...
 #>  $ year        : num [1:392] 2025 2025 2025 2025 2025 ...
 #>  $ month       : num [1:392] 8 7 6 5 4 3 2 1 12 11 ...
